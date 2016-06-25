@@ -1,0 +1,16 @@
+{
+  "name": "Ion",
+  "main": "server.js",
+  "dependencies" : {
+    "express" : "~4.0.0",
+    "ejs" : "~0.8.5",
+    "bson" : "~0.2.22",
+    "morgan": "~1.0.0",
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "method-override": "~1.0.0",
+    "request": "*",
+    "async":"*",
+    "serve-favicon":"*",
+  }
+}
