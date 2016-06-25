@@ -11,6 +11,6 @@
     "method-override": "~1.0.0",
     "request": "*",
     "async":"*",
-    "serve-favicon":"*",
+    "serve-favicon":"*"
   }
 }
