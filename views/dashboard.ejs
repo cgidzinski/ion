@@ -3,18 +3,56 @@
 <head>
     <title>Ion Beta | Dashboard</title>
     <%= include /partials/header.ejs %>
-    <link rel="stylesheet" href="/css/admin.css" type="text/css">
 </head>
 <body>
-<%= include /partials/sidebar.ejs %>
-                    <div class="tab-content">
-                      <h3>Dashboard</h3>
-                      <br>
-                          <p>
-                                Use side menu to do stuff
-                          </p>  
-                    </div>
+
+ <div class="uk-vertical-align ">
+ <div class="uk-grid uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-4 uk-vertical-align-middle ">
+                                  <a href="/install">
+                                    <div class="uk-panel uk-panel-box">
+                                      <div class="uk-panel-teaser">
+                                         <img src="http://getuikit.com/docs/images/placeholder_800x280.svg" alt=""></div>
+                                        <h3 class="uk-panel-title">Install New Fiber</h3>
+                                        Click Here to Install a New Fiber
+                                    </div>
+                                    </a>
+                                </div>
+
+                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                  <a href="/collect">
+                                    <div class="uk-panel uk-panel-box">
+                                      <div class="uk-panel-teaser">
+                                         <img src="http://getuikit.com/docs/images/placeholder_800x280.svg" alt=""></div>
+                                        <h3 class="uk-panel-title">Start Collecting Data</h3>
+                                        Start Collecting Data
+                                    </div>
+                                    </a>
+                                </div>
+
+                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                  <a href="/setup">
+                                    <div class="uk-panel uk-panel-box">
+                                      <div class="uk-panel-teaser">
+                                         <img src="http://getuikit.com/docs/images/placeholder_800x280.svg" alt=""></div>
+                                        <h3 class="uk-panel-title">Setup Options</h3>
+                                        Configure Setup Options
+                                    </div>
+                                    </a>
+                                </div>
+
+                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                  <a href="/help">
+                                    <div class="uk-panel uk-panel-box">
+                                      <div class="uk-panel-teaser">
+                                         <img src="http://getuikit.com/docs/images/placeholder_800x280.svg" alt=""></div>
+                                        <h3 class="uk-panel-title">Help</h3>
+                                        Find Help and Troubleshooting Tips
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+</div>
 </body>
-<%= include /partials/footer.ejs %>
 
     </html>

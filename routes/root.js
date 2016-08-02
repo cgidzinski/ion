@@ -10,31 +10,23 @@ module.exports = function(app, passport) {
           res.render('dashboard.ejs');
     });
 
-    app.get('/newfiber', function(req, res) {
-          res.render('newfiber_1.ejs');
+    app.get('/install', function(req, res) {
+          res.render('install.ejs');
     });
 
-        app.get('/newfibertc', function(req, res) {
-          res.render('newfiber_2.ejs');
+    app.get('/install2', function(req, res) {
+          res.render('install2.ejs');
     });
 
-        app.get('/newfiberadj', function(req, res) {
-          res.render('newfiber_3.ejs');
+    app.get('/collect', function(req, res) {
+          res.render('collect.ejs');
     });
 
-        app.get('/newfibercond', function(req, res) {
-          res.render('newfiber_4.ejs');
+    app.get('/help', function(req, res) {
+          res.render('help.ejs');
     });
 
-    app.get('/startsequence', function(req, res) {
-          res.render('startsequence_1.ejs');
-    });
-
-    app.get('/wiki', function(req, res) {
-          res.render('wiki.ejs');
-    });
-
-    app.get('/options', function(req, res) {
-          res.render('options.ejs');
+    app.get('/setup', function(req, res) {
+          res.render('setup.ejs');
     });
 }
