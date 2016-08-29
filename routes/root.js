@@ -44,7 +44,7 @@ var boxcar = req.param("boxcar");
 if (boxcar == undefined) {boxcar = 30};
 
 var seqint = req.param("seqint");
-if (seqint == undefined) {seqint = 60000};
+if (seqint == undefined) {seqint = 2000};
 
 var prefix = req.param("prefix");
 if (prefix == undefined) {prefix = "IonTest_"};
@@ -83,7 +83,7 @@ var spectrumdata;
 request('http://192.168.42.1/cgi-bin/getwavelengths.php',{timeout: 1500}, function (error, response, body) {
    if (!error && response.statusCode == 200) {                            
     var wavelengthdata = body.split(" ");
-
+//gettectemperature
               request('http://192.168.42.1/cgi-bin/currentspectrum.php',{timeout: 1500}, function (error, response, body) {
                  if (!error && response.statusCode == 200) {
                   var spectrumdata = body.split(" ");

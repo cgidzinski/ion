@@ -14,6 +14,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var request = require('request');
 var favicon = require('serve-favicon');
+// var Gpio = require('onoff').Gpio,led = new Gpio(26, 'out');
+
+// setTimeout(function () {
+//   clearInterval(iv); // Stop blinking 
+//   led.writeSync(0);  // Turn LED off. 
+//   led.unexport();    // Unexport GPIO and free resources 
+// }, 5000);
+
+// led.writeSync(1);
+// wait
+// led.writeSync(0);
 // Cors
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
