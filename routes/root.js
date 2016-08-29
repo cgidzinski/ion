@@ -56,7 +56,7 @@ if (prefix == undefined) {prefix = "IonTest_"};
                                 scanavg : scanavg,
                                 boxcar : boxcar,
                                 seqint  :seqint,
-                                prefix  :prefix,
+                                prefix  :prefix
                               });
     });
 

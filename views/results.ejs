@@ -17,8 +17,16 @@
     </div>
     </div>
 </div>
-<%= wavelength %>
-<%= spectrum %>
+<br>
+<h2>Table Data</h2>
+<table border="2">
+<% for(var i=0; i<wavelength.length; i++) {%>
+<tr>
+   <td><%= wavelength[i] %></td>
+   <td><%= spectrum[i] %></td>
+   </tr>
+<% } %>
+</table>
 </body>
 
     </html>
