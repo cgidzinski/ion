@@ -31,10 +31,6 @@ module.exports = function(app, request) {
     });
 
     app.get('/collect', function(req, res) {
-          res.render('collect_basic.ejs');
-    });
-
-    app.get('/collectadj', function(req, res) {
 var aqnumber = req.param("aqnumber");
 if (aqnumber == undefined) {aqnumber = 10};
 
@@ -47,20 +43,65 @@ if (scanavg == undefined) {scanavg = 5};
 var boxcar = req.param("boxcar");
 if (boxcar == undefined) {boxcar = 30};
 
-        request('http://www.google.com', function (error, response, body) {
-           if (!error && response.statusCode == 200) {
-                console.log(data); // Print the google web page.
+var seqint = req.param("seqint");
+if (seqint == undefined) {seqint = 60000};
 
-                  res.render('collect_adj.ejs',{
-                  aqnumber : req.param("aqnumber"),
-                  inttime : inttime,
-                  scanavg : scanavg,
-                  boxcar : boxcar,
-                  data : data
-                  });
-           }
-        });
+var prefix = req.param("prefix");
+if (prefix == undefined) {prefix = "IonTest_"};
+
+              console.log("ALL SET");
+                                res.render('collect.ejs',{
+                                aqnumber : aqnumber,
+                                inttime : inttime,
+                                scanavg : scanavg,
+                                boxcar : boxcar,
+                                seqint  :seqint,
+                                prefix  :prefix,
+                              });
     });
+
+
+    app.get('/acquire', function(req, res) {
+      var aqnumber = req.param("aqnumber");
+      var seqint = req.param("seqint");
+          res.render('acquire.ejs',{
+                                aqnumber : aqnumber,
+                                seqint : seqint,});
+    });
+
+ 
+
+
+ app.get('/results', function(req, res) {
+var wavelengthdata;
+var spectrumdata;
+
+
+
+
+
+request('http://192.168.42.1/cgi-bin/getwavelengths.php',{timeout: 1500}, function (error, response, body) {
+   if (!error && response.statusCode == 200) {                            
+    var wavelengthdata = body.split(" ");
+
+              request('http://192.168.42.1/cgi-bin/currentspectrum.php',{timeout: 1500}, function (error, response, body) {
+                 if (!error && response.statusCode == 200) {
+                  var spectrumdata = body.split(" ");
+
+                console.log("ALL SET");
+                                  res.render('results.ejs',{
+                                  wavelength : wavelengthdata,
+                                  spectrum: spectrumdata
+                                  });
+
+                }
+               });
+
+  }
+ });
+});
+
+
 
 
 
@@ -74,5 +115,7 @@ if (boxcar == undefined) {boxcar = 30};
           res.render('setup.ejs');
     });
 
-    var data = "SOME DATA"
 }
+
+
+//<a class="uk-button uk-button-danger uk-button-large" href="http://192.168.42.1/cgi-bin/startsequence.php">Acquire</a>

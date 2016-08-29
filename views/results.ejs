@@ -1,0 +1,80 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+<div class="uk-grid">
+    <div class="uk-width-medium-5-10">
+    <canvas id="myChart"  height="300"></canvas>
+    </div>
+    <div class="uk-width-medium-5-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>Looks Good?</h1></strong>
+        <a class="uk-button uk-button-danger uk-button-large" href="/collect">Change Parameters</a>
+        <a class="uk-button uk-button-danger uk-button-large" href="/help">Accept</a>
+    </div>
+    </div>
+</div>
+<%= wavelength %>
+<%= spectrum %>
+</body>
+
+    </html>
+
+
+
+
+
+                      
+<script>
+var spec = [<%= spectrum %>];
+var wave = [<%= wavelength %>];
+var myDATA = [];
+
+
+  for (var i = 0; i < wave.length; i++) {
+    myDATA.push({"x": wave[i],"y": spec[i]});
+  }
+
+var ctx = document.getElementById("myChart");
+var scatterChart = new Chart(ctx, {
+    type: 'scatter',
+    
+    data: {
+        datasets: [{
+            label: 'Reference Spectrum',
+            data: myDATA
+        }]
+    },
+
+
+    options: {
+        title: {
+            display: true,
+            text: 'Measured Spectrum'
+        },
+
+
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'INTENSITY (counts)',
+                padding: '10'
+                }
+
+            }],
+
+            xAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'WAVELENGTH (nm)'
+                }
+            }]
+
+        }
+    }
+});
+</script>

@@ -1,0 +1,42 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+    <iframe src='http://192.168.42.1/cgi-bin/startsequence.php'height="0" width="0"></iframe>
+
+<h1 id="countdown-holder"><%= (seqint * aqnumber)/1000 %> Seconds Remaining</h1>
+
+
+</body>
+
+<script type="text/javascript">
+var time = <%= seqint * aqnumber %>
+var timer;
+
+window.onload = function () {
+ timer = setInterval(function(){ countdown(); }, 1000);
+
+};
+
+countdown = function(){
+if ( time <= 0){
+clearInterval(timer);
+window.location.href = "/results";
+}
+
+
+var timedisp = document.getElementById("countdown-holder")
+ time = time - 1000;
+  timedisp.innerHTML = time/1000 + " Seconds Remaining";
+
+
+
+
+}
+
+</script>
+
+    </html>
