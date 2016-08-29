@@ -12,7 +12,7 @@ var port     = process.env.PORT || 8069;
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-
+var request = require('request');
 var favicon = require('serve-favicon');
 // Cors
 app.use(function(req, res, next) {
@@ -39,7 +39,7 @@ app.use(express.static(__dirname + '/public'));
 // required for passport
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes ======================================================================
-require('./routes/root.js')(app);
+require('./routes/root.js')(app,request);
 require('./routes/404.js')(app);
 // launch ======================================================================
 
