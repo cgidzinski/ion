@@ -10,24 +10,52 @@ module.exports = function(app, request) {
           res.render('dashboard.ejs');
     });
 
-    app.get('/install', function(req, res) {
-          res.render('install.ejs');
+    app.get('/install01', function(req, res) {
+          res.render('install01.ejs');
     });
 
-    app.get('/install2', function(req, res) {
-          res.render('install2.ejs');
+    app.get('/install02', function(req, res) {
+          res.render('install02.ejs');
     });
 
- 	app.get('/install3', function(req, res) {
-          res.render('install3.ejs'); 
+ 	  app.get('/install03', function(req, res) {
+          res.render('install03.ejs'); 
     });
 
- 	app.get('/install4', function(req, res) {
-          res.render('install4.ejs'); 
+ 	  app.get('/install04', function(req, res) {
+          res.render('install04.ejs'); 
     });
 
-     	app.get('/install_fin', function(req, res) {
-          res.render('install_fin.ejs'); 
+    app.get('/install05', function(req, res) {
+          res.render('install05.ejs'); 
+    });
+
+    app.get('/install06', function(req, res) {
+          res.render('install06.ejs'); 
+    });
+
+    app.get('/install07', function(req, res) {
+          res.render('install07.ejs'); 
+    });
+
+    app.get('/install08', function(req, res) {
+          res.render('install08.ejs'); 
+    });
+
+    app.get('/install09', function(req, res) {
+          res.render('install09.ejs'); 
+    });
+
+    app.get('/install10', function(req, res) {
+          res.render('install10.ejs'); 
+    });
+
+    app.get('/install11', function(req, res) {
+          res.render('install11.ejs'); 
+    });
+
+    app.get('/install12', function(req, res) {
+          res.render('install12.ejs'); 
     });
 
     app.get('/collect', function(req, res) {
