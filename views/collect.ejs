@@ -22,13 +22,15 @@
     <div class="uk-panel uk-panel-box">                             
         <strong><h1>Aquisition Parameters</h1></strong>
         <form action="/collect">
-        <h3># of Aq.: <input type="text" name="aqnumber" value="<%= aqnumber %>"></h3>
-        <h3>Int. Time: <input type="text" name="inttime" value="<%= inttime %>"></h3>
-        <h3>Scans 2Ave: <input type="text" name="scanavg" value="<%= scanavg %>"></h3>
-        <h3>Box Car: <input type="text" name="boxcar" value="<%= boxcar %>"></h3>
-        <h3>Sequence Interval: <input type="text" name="seqint" value="<%= seqint %>"></h3>
-        <h3>Prefix Data: <input type="text" name="prefix" value="<%= prefix %>"></h3>
-        <h3><button class="uk-button uk-button-danger uk-button-large" type="submit">Accept Settings</button></h3>
+
+        <h3># of Aq.: <input type="text" name="aqnumber" value="<%= aqnumber %>"><br>
+        Int. Time: <input type="text" name="inttime" value="<%= inttime %>"><br>
+        Scans 2Ave: <input type="text" name="scanavg" value="<%= scanavg %>"><br>
+        Box Car: <input type="text" name="boxcar" value="<%= boxcar %>"><br>
+        Sequence Interval: <input type="text" name="seqint" value="<%= seqint %>"><br>
+        Prefix Data: <input type="text" name="prefix" value="<%= prefix %>"><br>
+        <button class="uk-button uk-button-danger uk-button-large" type="submit">Accept Settings</button></h3>
+        
         </form>
         <a class="uk-button uk-button-danger uk-button-large" href="/acquire?aqnumber=<%= aqnumber %>&seqint=<%= seqint %>">Acquire Data</a>
     </div>

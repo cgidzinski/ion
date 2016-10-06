@@ -4,7 +4,7 @@
     <title>Ion Beta | Dashboard</title>
     <%= include /partials/header.ejs %>
 </head>
-<strongody>
+<strongbody>
 
 
 <!-- <div class="uk-thumbnail uk-thumbnail-expand" width = "100%">
@@ -14,6 +14,36 @@
     <div class="uk-thumbnail-caption">Picture Of Packaged</div>
 </div>
  -->
+    <iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=<%= aqnumber %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time=<%= inttime %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans=<%= scanavg %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width=<%= boxcar %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval=<%= seqint %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix=<%= prefix %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height="0" width="0"></iframe>
+
+
+
+<div class="uk-grid">
+    <div class="uk-width-medium-8-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>Aquisition Parameters</h1></strong>
+        <form action="/collect">
+
+        <h3># of Aq.: <input type="text" name="aqnumber" value="<%= aqnumber %>"><br>
+        Int. Time: <input type="text" name="inttime" value="<%= inttime %>"><br>
+        Scans 2Ave: <input type="text" name="scanavg" value="<%= scanavg %>"><br>
+        Box Car: <input type="text" name="boxcar" value="<%= boxcar %>"><br>
+        Sequence Interval: <input type="text" name="seqint" value="<%= seqint %>"><br>
+        Prefix Data: <input type="text" name="prefix" value="<%= prefix %>"><br></h3>
+
+        </form>
+        <a class="uk-button uk-button-danger uk-button-large" href="/acquire?aqnumber=<%= aqnumber %>&seqint=<%= seqint %>">Acquire Data</a>
+    </div>
+    </div>
+</div>
+
+
 
 
 <div class="uk-grid">
@@ -21,7 +51,7 @@
     </div>
     <div class="uk-width-medium-5-10">
 	<div class="uk-panel uk-panel-box">                             
-         <strong><h1>Step 2</h1></strong>
+         <strong><h1>CHECK</h1></strong>
         <h3>Test system for appropriate optical transmission. <button class="uk-button uk-button-danger uk-button-large" type="button">Acquire</button></h3>
     </div>
     </div>
@@ -29,14 +59,21 @@
 
    
 
-<a href="/">
+
     <div class="uk-grid">
     <div class="uk-width-medium-5-10"><img class="uk-thumbnail" src="http://placekitten.com/300/300" alt="">
     </div>
     <div class="uk-width-medium-5-10">
 	<div class="uk-panel uk-panel-box">                             
         <strong><h1>Continue</h1></strong>
-        <h3><Button class="uk-button uk-button-danger uk-button-large" type="button">Next</button></h3>
+        
+
+        <a href="/install01">
+        <h3><Button class="uk-button uk-button-danger uk-button-large" type="button">START OVER</button></h3>
+        </a>
+        <a href="/">
+        <h3><Button class="uk-button uk-button-danger uk-button-large" type="button">FINISH</button></h3>
+        </a>
     </div>
     </div>
 </div>

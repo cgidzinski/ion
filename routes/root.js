@@ -55,7 +55,34 @@ module.exports = function(app, request) {
     });
 
     app.get('/install12', function(req, res) {
-          res.render('install12.ejs'); 
+      var aqnumber = req.param("aqnumber");
+if (aqnumber == undefined) {aqnumber = 1};
+
+var inttime = req.param("inttime");
+if (inttime == undefined) {inttime = 10000};
+
+var scanavg = req.param("scanavg");
+if (scanavg == undefined) {scanavg = 1};
+
+var boxcar = req.param("boxcar");
+if (boxcar == undefined) {boxcar = 0};
+
+var seqint = req.param("seqint");
+if (seqint == undefined) {seqint = 0};
+
+var prefix = req.param("prefix");
+if (prefix == undefined) {prefix = "IonTest_"};
+
+              console.log("ALL SET");
+                                res.render('install12.ejs',{
+                                aqnumber : aqnumber,
+                                inttime : inttime,
+                                scanavg : scanavg,
+                                boxcar : boxcar,
+                                seqint  :seqint,
+                                prefix  :prefix
+                              });
+           
     });
 
     app.get('/collect', function(req, res) {
@@ -140,7 +167,34 @@ request('http://192.168.42.1/cgi-bin/getwavelengths.php',{timeout: 1500}, functi
     });
 
     app.get('/setup', function(req, res) {
-          res.render('setup.ejs');
+          var aqnumber = req.param("aqnumber");
+if (aqnumber == undefined) {aqnumber = 10};
+
+var inttime = req.param("inttime");
+if (inttime == undefined) {inttime = 100};
+
+var scanavg = req.param("scanavg");
+if (scanavg == undefined) {scanavg = 5};
+
+var boxcar = req.param("boxcar");
+if (boxcar == undefined) {boxcar = 30};
+
+var seqint = req.param("seqint");
+if (seqint == undefined) {seqint = 2000};
+
+var prefix = req.param("prefix");
+if (prefix == undefined) {prefix = "IonTest_"};
+
+              console.log("ALL SET");
+                                res.render('setup.ejs',{
+                                aqnumber : aqnumber,
+                                inttime : inttime,
+                                scanavg : scanavg,
+                                boxcar : boxcar,
+                                seqint  :seqint,
+                                prefix  :prefix
+                              });
+          
     });
 
 }
