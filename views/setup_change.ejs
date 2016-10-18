@@ -1,0 +1,126 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+
+SET DEFAULTS
+    
+    
+
+
+    <iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=<%= aqnumber %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time=<%= inttime %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans=<%= scanavg %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width=<%= boxcar %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval=<%= seqint %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix=<%= prefix %>' height="0" width="0"></iframe>
+    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height="0" width="0"></iframe>
+
+    <script>
+    var localSettings = {aqnumber:"", inttime:"", scanavg:"", boxcar:"", seqint:"", prefix:""};
+
+    sessionStorage.setItem('aqnumber', "<%= aqnumber %>");
+    document.write(sessionStorage.getItem('aqnumber'));
+    sessionStorage.setItem('inttime', "<%= inttime %>");
+    document.write(sessionStorage.getItem('inttime'));
+    sessionStorage.setItem('scanavg', "<%= scanavg %>");
+    document.write(sessionStorage.getItem('scanavg'));
+    sessionStorage.setItem('boxcar', "<%= boxcar %>");
+    document.write(sessionStorage.getItem('boxcar'));
+    sessionStorage.setItem('seqint', "<%= seqint %>");
+    document.write(sessionStorage.getItem('seqint'));
+    sessionStorage.setItem('prefix', "<%= prefix %>");
+    document.write(sessionStorage.getItem('prefix'));
+    
+    </script>
+
+<div class="uk-grid">
+    <div class="uk-width-medium-8-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>Default Parameters</h1></strong>
+        
+        <form action="/setup_change"  >
+
+        <h3><input type='button' value = '-' field = 'aqnumber' delta = "1" class = 'qtyminus' >
+        # of Aq.: <input id="aqnum" type="text" name="aqnumber"  value='<%= aqnumber %>' />
+        <input type='button' value = '+' field = 'aqnumber' delta = "1" class= 'qtyplus'/></h3>
+
+        <h3><input type='button' value = '-' field = 'inttime' delta = "10000" class = 'qtyminus'/>
+        Int. Time: <input id="inttime" type="text" name="inttime" value='<%= inttime %>'>
+        <input type='button' value = '+' field = 'inttime' delta = "10000" class= 'qtyplus'/></h3>
+
+        <h3><input type='button' value = '-' field = 'scanavg' delta = "1" class = 'qtyminus'/>
+        Scans 2Ave: <input id="scanavg" type="text" name="scanavg" value='<%= scanavg %>'>
+        <input type='button' value = '+' field = 'scanavg' delta = "1" class= 'qtyplus'/></h3>
+
+        <h3><input type='button' value = '-' field = 'boxcar' delta = "5" class = 'qtyminus'/>
+        Box Car: <input id="boxcar" type="text" name="boxcar" value="<%= boxcar %>">
+        <input type='button' value = '+' field = 'boxcar' delta = "5" class= 'qtyplus'/></h3>
+
+        <h3><input type='button' value = '-' field = 'seqint' delta = "5" class = 'qtyminus'/>
+        Sequence Interval: <input id ="seqint" type="text" name="seqint" value="<%= seqint %>">
+        <input type='button' value = '+' field = 'seqint' delta = "5" class= 'qtyplus'/></h3>
+
+        
+        <h3>Prefix Data: <input type="text" id = "prefix" name="prefix" value="<%= prefix %>"><br></h3>
+        
+
+        <h3><button class="uk-button uk-button-danger uk-button-large"  type="submit">SAVE</button><button class="uk-button uk-button-danger uk-button-large"  type="reset">RESTORE</button><button class="uk-button uk-button-danger uk-button-large" type="button" onclick="window.location.href='/'">DONE</button></h3>
+        
+
+        </form>
+       
+    </div>
+</div>
+
+
+</body>
+</html>
+
+<script>
+// Local Storage of Form Values
+
+
+jQuery(document).ready(function(){
+    // This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name and detla
+        fieldName = $(this).attr('field');
+        delta = $(this).attr('delta');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            $('input[name='+fieldName+']').val(currentVal + Number(delta));
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        delta = $(this).attr('delta');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 0) {
+            // Decrement one
+            $('input[name='+fieldName+']').val(currentVal - Number(delta));
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+});
+
+</script>

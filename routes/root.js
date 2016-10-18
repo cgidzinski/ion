@@ -1,13 +1,9 @@
 
-var settings = { 
+// intialize settings storage variables
 
-  aqnumber: 1,
-  inttime: 1,
-  scanavg: 51,
-  boxcar: 1,
-  seqint: 1,
-  prefix: 1
-    };
+    
+
+settingsHold = {aqnumber:"5", inttime:"5", scanavg:"3", boxcar:"3", seqint:"5", prefix:"5"};
 
 
 module.exports = function(app, request) {
@@ -68,21 +64,7 @@ module.exports = function(app, request) {
 
     app.get('/install12', function(req, res) {
     
-    res.render('setup.ejs',{
-                                aqnumber : settings.aqnumber,
-                                inttime : settings.inttime,
-                                scanavg : settings.scanavg,
-                                boxcar : settings.boxcar,
-                                seqint  :settings.seqint,
-                                prefix  :settings.prefix
-                              });
-
-settings.aqnumber = req.param("aqnumber");
-settings.inttime = req.param("inttime");
-settings.scanavg = req.param("scanavg");
-settings.boxcar = req.param("boxcar");
-settings.seqint = req.param("seqint");
-settings.prefix = req.param("prefix");
+    
            
     });
 
@@ -167,29 +149,76 @@ request('http://192.168.42.1/cgi-bin/getwavelengths.php',{timeout: 1500}, functi
           res.render('help.ejs');
     });
 
-    app.get('/setup', function(req, res) {
+    app.get('/setup_change', function(req, res) {
+    
+    // SET INITIAL DEFAULT VALUES HERE
+     
+   
+    
+    // INPUT DEFAULT VALUES HERE
+   
 
-console.log("ALL SET");
-                                res.render('setup.ejs',{
-                                aqnumber : settings.aqnumber,
-                                inttime : settings.inttime,
-                                scanavg : settings.scanavg,
-                                boxcar : settings.boxcar,
-                                seqint  :settings.seqint,
-                                prefix  :settings.prefix
+
+        var aqnumber = req.param("aqnumber");
+        if (aqnumber == undefined){ aqnumber = 5;
+        }
+        else if (aqnumber != settingsHold.aqnumber){
+          settingsHold.aqnumber = aqnumber;
+        }
+
+        var inttime = req.param("inttime");
+        if (inttime == undefined){inttime = 10;
+        }
+        else if (inttime != settingsHold.inttime){
+          settingsHold.inttime = inttime;
+        }
+        
+
+        var scanavg = req.param("scanavg");
+        if (scanavg == undefined){scanavg = 5;
+        }
+        else  if (scanavg != settingsHold.scanavg){
+          settingsHold.scanavg = scanavg;
+        }
+
+        var boxcar = req.param("boxcar");
+        if (boxcar == undefined){boxcar = 30;
+        }
+        else if (boxcar != settingsHold.boxcar){
+          settingsHold.scanavg = scanavg;
+        }
+
+        var seqint = req.param("seqint");
+        if (seqint == undefined){seqint = 10;}
+        else if (seqint != settingsHold.seqint){
+          settingsHold.seqint = seqint;
+        }
+        
+        var prefix = req.param("prefix");
+        if (prefix == undefined){prefix='test'
+        }
+        else if (prefix != settingsHold.prefix){
+          settingsHold.prefix = prefix
+        }
+
+      console.log("ALL SET");
+                                res.render('setup_change.ejs',{
+                                
+                                aqnumber : aqnumber,
+                                inttime : inttime,
+                                scanavg : scanavg,
+                                boxcar : boxcar,
+                                seqint  : seqint,
+                                prefix  : prefix
+                              
                               });
 
-settings.aqnumber = req.param("aqnumber");
-settings.inttime = req.param("inttime");
-settings.scanavg = req.param("scanavg");
-settings.boxcar = req.param("boxcar");
-settings.seqint = req.param("seqint");
-settings.prefix = req.param("prefix");
 
 
               
           
     });
+    
 
 }
 
