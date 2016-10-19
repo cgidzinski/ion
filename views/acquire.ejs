@@ -5,43 +5,35 @@
     <%= include /partials/header.ejs %>
 </head>
 <body>
-    <iframe src='http://192.168.42.1/cgi-bin/startsequence.php'height="0" width="0"></iframe>
-
-<h1 id="countdown-holder"><%= (5000+(seqint * aqnumber))/1000 %> Seconds Remaining</h1>
-
+    <!-- <iframe src='http://192.168.42.1/cgi-bin/startsequence.php'height="0" width="0"></iframe> -->
+<h1 id="countdown-holder">Calculating  Seconds Remaining</h1>
 <form action="http://192.168.42.1/cgi-bin/stopsequence.php">
-<h3><button class="uk-button uk-button-danger uk-button-large" type="submit">Abort</button></h3>
+<h3><button class="uk-button uk-button-danger uk-button-large" type="submit">Stop</button></h3>
 </form>
-
 </body>
 
+
+
+
+
 <script type="text/javascript">
-var time = <%= seqint * aqnumber %>
-time = time + 5000;
+var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 5000
 var timer;
 
-window.onload = function () {
+$(document).ready ( function(){
  timer = setInterval(function(){ countdown(); }, 1000);
-
-};
+});
 
 countdown = function(){
-if ( time <= 0){
-clearInterval(timer);
+if ( time <= 0)
+{
 window.location.href = "/results";
+clearInterval(timer);
 }
-
-
-var timedisp = document.getElementById("countdown-holder")
-if (time > 0){
- time = time - 1000;
-  timedisp.innerHTML = time/1000 + " Seconds Remaining";
-}
-
-
-
-}
-
+else
+{
+time = time - 1000;
+document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+}}
 </script>
-
     </html>

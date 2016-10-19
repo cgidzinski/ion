@@ -6,121 +6,77 @@
 </head>
 <body>
 
-SET DEFAULTS
-    
-    
-
-
-    <iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=<%= aqnumber %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time=<%= inttime %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans=<%= scanavg %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width=<%= boxcar %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval=<%= seqint %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix=<%= prefix %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height="0" width="0"></iframe>
-
-    <script>
-    var localSettings = {aqnumber:"", inttime:"", scanavg:"", boxcar:"", seqint:"", prefix:""};
-
-    sessionStorage.setItem('aqnumber', "<%= aqnumber %>");
-    document.write(sessionStorage.getItem('aqnumber'));
-    sessionStorage.setItem('inttime', "<%= inttime %>");
-    document.write(sessionStorage.getItem('inttime'));
-    sessionStorage.setItem('scanavg', "<%= scanavg %>");
-    document.write(sessionStorage.getItem('scanavg'));
-    sessionStorage.setItem('boxcar', "<%= boxcar %>");
-    document.write(sessionStorage.getItem('boxcar'));
-    sessionStorage.setItem('seqint', "<%= seqint %>");
-    document.write(sessionStorage.getItem('seqint'));
-    sessionStorage.setItem('prefix', "<%= prefix %>");
-    document.write(sessionStorage.getItem('prefix'));
-    
-    </script>
 
 <div class="uk-grid">
     <div class="uk-width-medium-8-10">
     <div class="uk-panel uk-panel-box">                             
         <strong><h1>Default Parameters</h1></strong>
         
-        <form action="/setup_change"  >
 
-        <h3><input type='button' value = '-' field = 'aqnumber' delta = "1" class = 'qtyminus' >
-        # of Aq.: <input id="aqnum" type="text" name="aqnumber"  value='<%= aqnumber %>' />
-        <input type='button' value = '+' field = 'aqnumber' delta = "1" class= 'qtyplus'/></h3>
-
-        <h3><input type='button' value = '-' field = 'inttime' delta = "10000" class = 'qtyminus'/>
-        Int. Time: <input id="inttime" type="text" name="inttime" value='<%= inttime %>'>
-        <input type='button' value = '+' field = 'inttime' delta = "10000" class= 'qtyplus'/></h3>
-
-        <h3><input type='button' value = '-' field = 'scanavg' delta = "1" class = 'qtyminus'/>
-        Scans 2Ave: <input id="scanavg" type="text" name="scanavg" value='<%= scanavg %>'>
-        <input type='button' value = '+' field = 'scanavg' delta = "1" class= 'qtyplus'/></h3>
-
-        <h3><input type='button' value = '-' field = 'boxcar' delta = "5" class = 'qtyminus'/>
-        Box Car: <input id="boxcar" type="text" name="boxcar" value="<%= boxcar %>">
-        <input type='button' value = '+' field = 'boxcar' delta = "5" class= 'qtyplus'/></h3>
-
-        <h3><input type='button' value = '-' field = 'seqint' delta = "5" class = 'qtyminus'/>
-        Sequence Interval: <input id ="seqint" type="text" name="seqint" value="<%= seqint %>">
-        <input type='button' value = '+' field = 'seqint' delta = "5" class= 'qtyplus'/></h3>
-
-        
-        <h3>Prefix Data: <input type="text" id = "prefix" name="prefix" value="<%= prefix %>"><br></h3>
-        
-
-        <h3><button class="uk-button uk-button-danger uk-button-large"  type="submit">SAVE</button><button class="uk-button uk-button-danger uk-button-large"  type="reset">RESTORE</button><button class="uk-button uk-button-danger uk-button-large" type="button" onclick="window.location.href='/'">DONE</button></h3>
-        
-
-        </form>
-       
+<h3><button class="uk-button" onclick="num(-1,'aqNumber')">-</button> # of Aq.: <input id="aqNumber" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'aqNumber')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-1,'intTime')">-</button>  Int. Time: <input id="intTime" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'intTime')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-1,'scanAvg')">-</button>  Scan Avg.: <input id="scanAvg" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'scanAvg')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-1,'boxCar')">-</button>   Box Car: <input id="boxCar" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'boxCar')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-1,'seqInt')">-</button>   Seq Int.: <input id="seqInt" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'seqInt')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-1,'prefix')">-</button>   Prefix: Ion_<input id="prefix" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'prefix')">+</button></h3>
+<hr>
+            
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="setDefaults()">Restore Defaults</button>
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="done()">Save</button>
     </div>
 </div>
-
 
 </body>
 </html>
 
 <script>
-// Local Storage of Form Values
 
+ $(document).ready ( function(){
+    if (localStorage.getItem("aqNumber") == null){
+        setDefaults();
+    }
+        getValues();
+ })
 
-jQuery(document).ready(function(){
-    // This button will increment the value
-    $('.qtyplus').click(function(e){
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name and detla
-        fieldName = $(this).attr('field');
-        delta = $(this).attr('delta');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If is not undefined
-        if (!isNaN(currentVal)) {
-            // Increment
-            $('input[name='+fieldName+']').val(currentVal + Number(delta));
-        } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(0);
-        }
-    });
-    // This button will decrement the value till 0
-    $(".qtyminus").click(function(e) {
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        fieldName = $(this).attr('field');
-        delta = $(this).attr('delta');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If it isn't undefined or its greater than 0
-        if (!isNaN(currentVal) && currentVal > 0) {
-            // Decrement one
-            $('input[name='+fieldName+']').val(currentVal - Number(delta));
-        } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(0);
-        }
-    });
-});
+function num(value,field){
+    if (parseInt(document.getElementById(field).value) == 0 && value <0){return}
+    document.getElementById(field).value = parseInt(document.getElementById(field).value)+value;
+setValues();
+}
+
+function setDefaults(){
+    alert("Defaults Set!")
+    localStorage.setItem("aqNumber", 5);
+    localStorage.setItem("intTime", 5);
+    localStorage.setItem("scanAvg", 5);
+    localStorage.setItem("boxCar", 5);
+    localStorage.setItem("seqInt", 5);
+    localStorage.setItem("prefix", 5);
+    getValues();
+}
+
+function done(){
+    setValues()
+window.location.href='/'
+}
+
+function setValues(){
+     localStorage.setItem("aqNumber",document.getElementById("aqNumber").value) 
+     localStorage.setItem("intTime",document.getElementById("intTime").value)
+     localStorage.setItem("scanAvg",document.getElementById("scanAvg").value)  
+     localStorage.setItem("boxCar",document.getElementById("boxCar").value) 
+     localStorage.setItem("seqInt",document.getElementById("seqInt").value)  
+     localStorage.setItem("prefix",document.getElementById("prefix").value)
+}
+
+function getValues(){
+    console.log("Values Get!")
+    document.getElementById("aqNumber").value = localStorage.getItem("aqNumber")
+    document.getElementById("intTime").value = localStorage.getItem("intTime")
+    document.getElementById("scanAvg").value = localStorage.getItem("scanAvg")
+    document.getElementById("boxCar").value = localStorage.getItem("boxCar")
+    document.getElementById("seqInt").value = localStorage.getItem("seqInt")
+    document.getElementById("prefix").value = localStorage.getItem("prefix")
+}
 
 </script>

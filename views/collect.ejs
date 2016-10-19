@@ -5,38 +5,30 @@
     <%= include /partials/header.ejs %>
 </head>
 <body>
-    <iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=<%= aqnumber %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time=<%= inttime %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans=<%= scanavg %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width=<%= boxcar %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval=<%= seqint %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix=<%= prefix %>' height="0" width="0"></iframe>
-    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height="0" width="0"></iframe>
-
-
-
-
 
 <div class="uk-grid">
     <div class="uk-width-medium-8-10">
     <div class="uk-panel uk-panel-box">                             
-        <strong><h1>Aquisition Parameters</h1></strong>
-        <form action="/collect">
+        <strong><h1>Conrfirm Aquisition Parameters</h1></strong>
+        <div id="paramCheck"></div>
+        <div id="frameBox"></div>
 
-        <h3># of Aq.: <input type="text" name="aqnumber" value="<%= aqnumber %>"><br>
-        Int. Time: <input type="text" name="inttime" value="<%= inttime %>"><br>
-        Scans 2Ave: <input type="text" name="scanavg" value="<%= scanavg %>"><br>
-        Box Car: <input type="text" name="boxcar" value="<%= boxcar %>"><br>
-        Sequence Interval: <input type="text" name="seqint" value="<%= seqint %>"><br>
-        Prefix Data: <input type="text" name="prefix" value="<%= prefix %>"><br>
-        <button class="uk-button uk-button-danger uk-button-large" type="submit">Accept Settings</button></h3>
-        
-        </form>
-        <a class="uk-button uk-button-danger uk-button-large" href="/acquire?aqnumber=<%= aqnumber %>&seqint=<%= seqint %>">Acquire Data</a>
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/setup_change'">Change Values</button>
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/acquire'">Accept</button>
+
     </div>
     </div>
 </div>
-
 </body>
+<script type="text/javascript">
+ $(document).ready ( function(){
+
+document.getElementById("paramCheck").innerHTML = "<h2>Aquisition Number: " + localStorage.getItem("aqNumber") + "<br>Integration Time: " + localStorage.getItem("intTime")+ "<br>Scan Average: " + localStorage.getItem("scanAvg")+ "<br>Box Car: " + localStorage.getItem("boxCar")+ "<br>Sequence Interval: " + localStorage.getItem("seqInt")+ "<br>Prefix: Ion_" + localStorage.getItem("prefix")+"<br><hr>Approximate Scan Time: " + (parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 5000)/1000 +" Seconds</h2>";
+
+document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions="+ localStorage.getItem("aqNumber") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ localStorage.getItem("intTime") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ localStorage.getItem("scanAvg") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ localStorage.getItem("boxCar") +"' height='0' width='0'></iframe    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ localStorage.getItem("seqInt") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix=Ion_"+ localStorage.getItem("prefix") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height='0' width='0'></iframe>";
+
+ })
+
+</script>
 
 </html>
