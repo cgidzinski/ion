@@ -1,0 +1,54 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+
+<div class="uk-grid">
+    <div class="uk-width-medium-8-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>Conrfirm Aquisition Parameters</h1></strong>
+        <div id="paramCheck"></div>
+        <div id="frameBox"></div>
+
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/setup_change'">Change Values</button>
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/acquireData'">Accept</button>
+
+    </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1);
+        day = '' + d.getDate();
+        year = d.getFullYear();
+        hour = d.getHours();
+        min = d.getMinutes();
+        sec = d.getSeconds();
+
+        
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (hour.length < 2) hour = '0' + hour;
+    if (min.length < 2) min = '0' + min;
+    if (sec.length < 2) sec = '0' + sec;
+
+    return [year, month, day].join('-') + 'T' + [hour, min, sec].join('-');
+}
+
+ $(document).ready ( function(){
+
+document.getElementById("paramCheck").innerHTML = "<h2>Aquisition Number: " + localStorage.getItem("aqNumber") + "<br>Integration Time: " + localStorage.getItem("intTime")+ "<br>Scan Average: " + localStorage.getItem("scanAvg")+ "<br>Box Car: " + localStorage.getItem("boxCar")+ "<br>Sequence Interval: " + localStorage.getItem("seqInt")+ "<br>Prefix: Ion_" + localStorage.getItem("prefix")+"<br><hr>Approximate Scan Time: " + (parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1) +" Seconds</h2>";
+
+document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions="+ localStorage.getItem("aqNumber") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ localStorage.getItem("intTime") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ localStorage.getItem("scanAvg") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ localStorage.getItem("boxCar") +"' height='0' width='0'></iframe    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ localStorage.getItem("seqInt") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ formatDate(Date()) +localStorage.getItem("prefix") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height='0' width='0'></iframe>";
+
+ })
+
+</script>
+
+</html>

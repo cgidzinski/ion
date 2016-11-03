@@ -1,0 +1,87 @@
+
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+<div class="uk-grid">
+    <div class="uk-width-medium-5-10">
+    <canvas id="myChart"  height="300"></canvas>
+    </div>
+    <div class="uk-width-medium-5-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>Looks Good?</h1></strong>
+        <a class="uk-button uk-button-danger uk-button-large" href="/setup_change">Change Parameters</a>
+        <a class="uk-button uk-button-danger uk-button-large" href="/collectData">Accept</a>
+    </div>
+    </div>
+</div>
+<br>
+<h2>Table Data</h2>
+<table border="2">
+<% for(var i=0; i<wavelength.length; i++) {%>
+<tr>
+   <td><%= wavelength[i] %></td>
+   <td><%= spectrum[i] %></td>
+   </tr>
+<% } %>
+</table>
+</body>
+
+    </html>
+
+
+
+
+
+                      
+<script>
+//------------------------------------------------// 
+// DISPLAY OF DARK SPECTRUM  
+// Plot of the dark spectrum just recorded as a spot-check
+// Accept it if it looks good
+// Move on to Reference Spectrum Collect
+//------------------------------------------------//
+
+
+var spec = [<%= spectrum %>];
+var wave = [<%= wavelength %>];
+var myDATA = [];
+  for (var i = 0; i < wave.length; i++) {
+    myDATA.push({"x": wave[i],"y": spec[i]});
+  }
+var ctx = document.getElementById("myChart");
+var scatterChart = new Chart(ctx, {
+    type: 'scatter',
+    
+    data: {
+        datasets: [{
+            label: 'Reference Spectrum',
+            data: myDATA
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Measured Spectrum'
+        },
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'INTENSITY (counts)',
+                padding: '10'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                display: true,
+                labelString: 'WAVELENGTH (nm)'
+                }
+            }]
+        }
+    }
+});
+</script>

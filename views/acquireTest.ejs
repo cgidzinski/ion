@@ -1,0 +1,45 @@
+
+
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+    <iframe src='http://192.168.42.1/cgi-bin/startsequence.php'height="0" width="0"></iframe>
+<h1>Waiting for data...</h1>
+</body>
+
+
+
+
+
+<script type="text/javascript">
+//----------------------------------------------------------------------------------//  
+// ACQUIRE TEST SPECTRUM SEQUENCE 
+// Needs to snap a single measurement with default int time, scans to average, and boxcar
+// Labeled with prefix DARK
+// Pulse light source for this one to check if light gets through to spectrometer
+//----------------------------------------------------------------------------------// 
+
+var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1
+var timer;
+
+$(document).ready ( function(){
+ timer = setInterval(function(){ countdown(); }, 1000);
+});
+
+countdown = function(){
+if ( time <= 0)
+{
+window.location.href = "/resultsTest";
+clearInterval(timer);
+}
+else
+{
+time = time - 1000;
+document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+}}
+</script>
+    </html>

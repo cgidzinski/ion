@@ -1,5 +1,5 @@
 // intialize settings storage variables
-settingsHold = { aqnumber: "5", inttime: "5", scanavg: "3", boxcar: "3", seqint: "5", prefix: "5" };
+
 module.exports = function(app, request) {
         // =============================================================================
         // ROOT ========================================================================
@@ -40,13 +40,37 @@ module.exports = function(app, request) {
         app.get('/install11', function(req, res) {
             res.render('install11.ejs');
         });
-        app.get('/collect', function(req, res) {
-            res.render('collect.ejs');
+        app.get('/install12', function(req, res) {
+            res.render('install12.ejs');
         });
-        app.get('/acquire', function(req, res) {
-            res.render('acquire.ejs');
+        app.get('/installFin', function(req, res) {
+            res.render('installFin.ejs');
         });
-        app.get('/results', function(req, res) {
+        app.get('/collectRefr', function(req, res) {
+            res.render('collectRefr.ejs');
+        });
+        app.get('/collectDark', function(req, res) {
+            res.render('collectDark.ejs');
+        });
+        app.get('/collectData', function(req, res) {
+            res.render('collectData.ejs');
+        });
+        app.get('/collectTest', function(req, res) {
+            res.render('collectTest.ejs');
+        });
+        app.get('/acquireRefr', function(req, res) {
+            res.render('acquireRefr.ejs');
+        });
+        app.get('/acquireDark', function(req, res) {
+            res.render('acquireDark.ejs');
+        });
+        app.get('/acquireData', function(req, res) {
+            res.render('acquireData.ejs');
+        });
+        app.get('/acquireTest', function(req, res) {
+            res.render('acquireTest.ejs');
+        });
+        app.get('/resultsDark', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
@@ -57,7 +81,67 @@ module.exports = function(app, request) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('results.ejs', {
+                            res.render('resultsDark.ejs', {
+                                wavelength: wavelengthdata,
+                                spectrum: spectrumdata
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        app.get('/resultsRefr', function(req, res) {
+            var wavelengthdata;
+            var spectrumdata;
+            request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var wavelengthdata = body.split(" ");
+                    //gettectemperature
+                    request('http://192.168.42.1/cgi-bin/currentspectrum.php', { timeout: 1500 }, function(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            var spectrumdata = body.split(" ");
+                            console.log("ALL SET");
+                            res.render('resultsRefr.ejs', {
+                                wavelength: wavelengthdata,
+                                spectrum: spectrumdata
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        app.get('/resultsData', function(req, res) {
+            var wavelengthdata;
+            var spectrumdata;
+            request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var wavelengthdata = body.split(" ");
+                    //gettectemperature
+                    request('http://192.168.42.1/cgi-bin/currentspectrum.php', { timeout: 1500 }, function(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            var spectrumdata = body.split(" ");
+                            console.log("ALL SET");
+                            res.render('resultsData.ejs', {
+                                wavelength: wavelengthdata,
+                                spectrum: spectrumdata
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        app.get('/resultsTest', function(req, res) {
+            var wavelengthdata;
+            var spectrumdata;
+            request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var wavelengthdata = body.split(" ");
+                    //gettectemperature
+                    request('http://192.168.42.1/cgi-bin/currentspectrum.php', { timeout: 1500 }, function(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            var spectrumdata = body.split(" ");
+                            console.log("ALL SET");
+                            res.render('resultsTest.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
