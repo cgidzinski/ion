@@ -211,7 +211,7 @@ pre,
 address,
 fieldset,
 figure {
-  margin: 0 0 15px 0;
+  margin: 0 0 5px 0;
 }
 * + p,
 * + ul,
@@ -247,7 +247,7 @@ h6 {
 * + h4,
 * + h5,
 * + h6 {
-  margin-top: 25px;
+  margin-top: 5px;
 }
 /*
  * Sizes
@@ -476,16 +476,16 @@ iframe {
  */
 /* Horizontal */
 .uk-grid {
-  margin-left: -15px;
+  margin-left: 5px;
 }
 .uk-grid > * {
-  padding-left: 15px;
+  padding-left: 5px;
 }
 /* Vertical */
 .uk-grid + .uk-grid,
 .uk-grid-margin,
 .uk-grid > * > .uk-panel + .uk-panel {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 /* Large screen and bigger */
 @media (min-width: 1220px) {
@@ -1791,18 +1791,18 @@ iframe {
 /* Sub-object: `uk-nav-header`
  ========================================================================== */
 .uk-nav-header {
-  padding: 5px 15px;
+  padding: 5px 5px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;
 }
 .uk-nav-header:not(:first-child) {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 /* Sub-object: `uk-nav-divider`
  ========================================================================== */
 .uk-nav-divider {
-  margin: 9px 15px;
+  margin: 4px 5px;
 }
 /* Sub-object: `uk-nav-sub`
  ========================================================================== */
@@ -1810,7 +1810,7 @@ iframe {
  * `ul` needed for higher specificity to override padding
  */
 ul.uk-nav-sub {
-  padding: 5px 0 5px 15px;
+  padding: 5px 0 5px 5px;
 }
 /* Modifier: `uk-nav-parent-icon`
  ========================================================================== */
@@ -2092,7 +2092,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   text-decoration: none;
   /* 1 */
   height: 41px;
-  padding: 0 15px;
+  padding: 0 10px;
   line-height: 40px;
   /* 2 */
   color: #444444;
