@@ -3,43 +3,43 @@
 <head>
     <title>Ion Beta | Dashboard V1</title>
     <%= include /partials/header.ejs %>
+
 </head>
 <body>
 
+
+
  <div class="uk-vertical-align ">
  <div class="uk-grid uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
-                                <newline>
-                                <div class="uk-width-medium-1-4 uk-vertical-align-middle ">
+                                
+                                <div class="uk-width"  style="width: 300px;" uk-vertical-align-middle >
                                   <a href="/install01">
-                                    <div class="uk-panel uk-panel-box">
-                                      <div class="uk-panel-teaser">
-                                         <img src="./images/DASH_FIBRE.png" alt=""></div>
-                                        <h3 class="uk-panel-title">
-                                        Click here for steps to install and test a new optrode</h3>
+                                    <div class="uk-panel uk-panel-box" >
+                                      <div class="uk-panel-teaser" >
+                                         <img src="./images/DASH_FIBRE.png" alt="" width="300"></div>
+                                        <h5 class="uk-margin-remove" >Tap here for steps to install a new optrode</h5>
                                     </div>
                                     </a>
                                 </div>
 
-                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                <div class="uk-width" style="width: 300px;" uk-vertical-align-middle>
                                   <a href="/collectDark">
                                     <div class="uk-panel uk-panel-box">
                                       <div class="uk-panel-teaser">
-                                         <img src="./images/DASH_START.png" alt=""></div>
-                                        <h3 class="uk-panel-title">
-                                        Click here to start a data aquisition sequence</h3>
+                                         <img src="./images/DASH_START.png" alt="" width="300"></div>
+                                        <h5 class="uk-margin-remove">Tap here to start data collection</h5>
                                         </div>
                                     </a>
                                 </div>
-                                <newline>
+                                
 
-                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                <div class="uk-width" style="width: 300px;"  uk-vertical-align-middle>
                                
                                   <a href= "/setup_change">
                                     <div class="uk-panel uk-panel-box">
                                       <div class="uk-panel-teaser">
-                                         <img src="./images/DASH_SETUP.png" alt=""></div>
-                                        <h3 class="uk-panel-title">
-                                        Tap here to adjust default aquisition settings</h3>
+                                         <img src="./images/DASH_SETUP.png" alt="" width="300"></div>
+                                        <h5 class="uk-margin-remove">Tap here to adjust settings</h5>
                                         
                                     </div>
                                     </a>
@@ -47,23 +47,20 @@
 
                                 </div>
 
-                                <div class="uk-width-medium-1-4 uk-vertical-align-middle">
+                                <div class="uk-width" style="width: 300px;"  uk-vertical-align-middle>
                                   <a href="/help">
                                     <div class="uk-panel uk-panel-box">
                                       <div class="uk-panel-teaser">
-                                         <img src="./images/DASH_HELP.png" alt=""></div>
-                                        <h3 class="uk-panel-title">
-                                        Tap here for reference and troubleshooting documents</h3>
+                                         <img src="./images/DASH_HELP.png" alt="" width="300"></div>
+                                        <h5 class="uk-margin-remove">Tap here for reference documents</h5>
                                         
                                     </div>
                                     </a>
                                 </div>
                             </div>
+
 </div><br>
-<form action="http://192.168.42.1/cgi-bin/settings.php" method="post">
-<h3><button class="uk-button uk-button-danger uk-button-large" name="shutdown" value="Shutdown" id="set" type="submit">Shutdown</button></h3>
-</form>
-</body>
+
 
     </html>
 

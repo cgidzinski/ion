@@ -156,6 +156,9 @@ module.exports = function(app, request) {
         app.get('/setup_change', function(req, res) {
             res.render('setup_change.ejs');
         });
+        app.get('/shutdown', function(req, res) {
+            res.render('shutdown.ejs');
+        });
 
 
 

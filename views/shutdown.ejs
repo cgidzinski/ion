@@ -1,0 +1,19 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard V1</title>
+    <%= include /partials/header.ejs %>
+
+</head>
+<body>
+
+<h1>Tap the big red button to shutdown.</h1>
+
+
+<form action="http://192.168.42.1/cgi-bin/settings.php" method="post">
+<h3><button class="uk-button uk-button-danger uk-button-large" name="shutdown" value="Shutdown" id="set" type="submit">Shutdown</button></h3>
+</form>
+</body>
+
+    </html>
+

@@ -476,16 +476,16 @@ iframe {
  */
 /* Horizontal */
 .uk-grid {
-  margin-left: -25px;
+  margin-left: -15px;
 }
 .uk-grid > * {
-  padding-left: 25px;
+  padding-left: 15px;
 }
 /* Vertical */
 .uk-grid + .uk-grid,
 .uk-grid-margin,
 .uk-grid > * > .uk-panel + .uk-panel {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 /* Large screen and bigger */
 @media (min-width: 1220px) {
@@ -1334,7 +1334,7 @@ iframe {
 /* Sub-object: `uk-panel-teaser`
  ========================================================================== */
 .uk-panel-teaser {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 /* Sub-object: `uk-panel-body`
  ========================================================================== */
@@ -1344,7 +1344,7 @@ iframe {
 /* Modifier: `uk-panel-box`
  ========================================================================== */
 .uk-panel-box {
-  padding: 15px;
+  padding: 5px;
   background: #fafafa;
   color: #444444;
   border: 1px solid #dddddd;
@@ -1361,9 +1361,9 @@ iframe {
   right: 10px;
 }
 .uk-panel-box > .uk-panel-teaser {
-  margin-top: -16px;
-  margin-left: -16px;
-  margin-right: -16px;
+  margin-top: -5px;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 /*
  * Nav in panel
