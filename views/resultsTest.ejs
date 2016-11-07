@@ -19,15 +19,7 @@
     </div>
 </div>
 <br>
-<h2>Table Data</h2>
-<table border="2">
-<% for(var i=0; i<wavelength.length; i += 20) {%>
-<tr>
-   <td><%= wavelength[i] %></td>
-   <td><%= spectrum[i] %></td>
-   </tr>
-<% } %>
-</table>
+
 </body>
 
     </html>
@@ -58,14 +50,13 @@ var scatterChart = new Chart(ctx, {
     
     data: {
         datasets: [{
-            label: 'Reference Spectrum',
             data: myDATA
         }]
     },
     options: {
         title: {
             display: true,
-            text: 'Measured Spectrum'
+            text: 'TEST SPECTRUM'
         },
         scales: {
             yAxes: [{
