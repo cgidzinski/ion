@@ -21,7 +21,7 @@
 <br>
 <h2>Table Data</h2>
 <table border="2">
-<% for(var i=0; i<wavelength.length; i++) {%>
+<% for(var i=0; i<wavelength.length; i += 50) {%>
 <tr>
    <td><%= wavelength[i] %></td>
    <td><%= spectrum[i] %></td>
@@ -49,7 +49,7 @@
 var spec = [<%= spectrum %>];
 var wave = [<%= wavelength %>];
 var myDATA = [];
-  for (var i = 0; i < wave.length; i++) {
+  for (var i = 0; i < wave.length; i += 50) {
     myDATA.push({"x": wave[i],"y": spec[i]});
   }
 var ctx = document.getElementById("myChart");
