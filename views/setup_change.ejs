@@ -17,7 +17,7 @@
 <h3><button class="uk-button" onclick="num(-2500,'intTime')">-</button>  Int. Time: <input id="intTime" type="text"/>&nbsp<button class="uk-button" onclick="num(+2500,'intTime')">+</button></h3>
 <h3><button class="uk-button" onclick="num(-1,'scanAvg')">-</button>  Scan Avg.: <input id="scanAvg" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'scanAvg')">+</button></h3>
 <h3><button class="uk-button" onclick="num(-5,'boxCar')">-</button>   Box Car: <input id="boxCar" type="text"/>&nbsp<button class="uk-button" onclick="num(+5,'boxCar')">+</button></h3>
-<h3><button class="uk-button" onclick="num(-5,'seqInt')">-</button>   Seq Int.: <input id="seqInt" type="text"/>&nbsp<button class="uk-button" onclick="num(+5,'seqInt')">+</button></h3>
+<h3><button class="uk-button" onclick="num(-5000,'seqInt')">-</button>   Seq Int.: <input id="seqInt" type="text"/>&nbsp<button class="uk-button" onclick="num(+5000,'seqInt')">+</button></h3>
 <h3>  Prefix: YY_MM_DD_<select id="prefix" type="select"/>
 
   <option>TEST</option>
@@ -80,7 +80,7 @@ function setDefaults(){
     localStorage.setItem("intTime", 10000);
     localStorage.setItem("scanAvg", 5);
     localStorage.setItem("boxCar", 30);
-    localStorage.setItem("seqInt", 10);
+    localStorage.setItem("seqInt", 10000);
     localStorage.setItem("prefix", 'DATA');
     getValues();
 }

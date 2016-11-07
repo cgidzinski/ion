@@ -23,7 +23,7 @@
 // Pulse light source for this one to check if light gets through to spectrometer
 //----------------------------------------------------------------------------------// 
 
-var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1
+var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1000
 var timer;
 
 $(document).ready ( function(){
