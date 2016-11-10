@@ -41,8 +41,8 @@ var scatterChart = new Chart(ctx, {
     
     data: {
         datasets: [{
-            borderColor: '#0099cc',
-            backgroundColor: '#33ccff',
+            borderColor: '#0052cc',
+            backgroundColor: '#66a3ff',
             data: myDATA
         }]
     },
@@ -60,7 +60,9 @@ var scatterChart = new Chart(ctx, {
         },
         
         scales: {
-            
+            gridLines:{
+                color:'#ffff00'
+            },
             yAxes: [{
                 ticks:{
                     fontColor: "yellow",
@@ -77,8 +79,8 @@ var scatterChart = new Chart(ctx, {
             xAxes: [{
                 ticks:{
                     fontColor: "yellow",
-                    max: 800,
-                    min: 400
+                    max: 900,
+                    min: 300
                 },
                 scaleLabel: {
                 display: true,
