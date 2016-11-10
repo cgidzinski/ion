@@ -60,23 +60,29 @@ var scatterChart = new Chart(ctx, {
         },
         
         scales: {
-            ticks: {
-                fontColor: 'yellow'
-            },
+            
             yAxes: [{
+                ticks:{
+                    fontColor: "yellow",
+                    max: 15000,
+                    beginAtZero: true
+                }
+                
                 scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
-                beginAtZero: true,
-                max: 15000,
                 padding: '10'
                 }
             }],
             xAxes: [{
+                ticks:{
+                    fontColor: "yellow",
+                    max: 800,
+                    min: 400
+                }
                 scaleLabel: {
                 display: true,
-                max: 800,
-                min: 400,
+                
                 labelString: 'WAVELENGTH (nm)'
                 }
             }]
