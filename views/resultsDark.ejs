@@ -64,30 +64,34 @@ var scatterChart = new Chart(ctx, {
             yAxes: [{
                 ticks:{
                     fontColor: "yellow",
-                    max: 15000,
+                    max: 14000,
                     beginAtZero: true
                 },
                 gridLines:{
-                    color:'#ffff00'
+                    color:'#ffffcc',
+                    drawBorder: true
                 },
                 scaleLabel: {
                 display: true,
-                labelString: 'INTENSITY (counts)',
+                labelString: 'INTENSITY (counts)'
+                fontColor:"#ffffcc",
                 padding: '10'
                 }
             }],
             xAxes: [{
                 ticks:{
-                    fontColor: "yellow",
+                    fontColor: "#ffffcc",
                     max: 900,
-                    min: 300
+                    min: 300,
+                    stepSize: 100
                 },
                 gridLines:{
-                    color:'#ffff00'
+                    color:'#ffff00',
+                    drawBorder: true
                 },
                 scaleLabel: {
                 display: true,
-                
+                fontColor:"#ffffcc",
                 labelString: 'WAVELENGTH (nm)'
                 }
             }]
