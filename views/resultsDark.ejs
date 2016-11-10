@@ -60,16 +60,16 @@ var scatterChart = new Chart(ctx, {
         },
         
         scales: {
-            gridLines:{
-                color:'#ffff00'
-            },
+
             yAxes: [{
                 ticks:{
                     fontColor: "yellow",
                     max: 15000,
                     beginAtZero: true
                 },
-                
+                gridLines:{
+                    color:'#ffff00'
+                },
                 scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
@@ -81,6 +81,9 @@ var scatterChart = new Chart(ctx, {
                     fontColor: "yellow",
                     max: 900,
                     min: 300
+                },
+                gridLines:{
+                    color:'#ffff00'
                 },
                 scaleLabel: {
                 display: true,
