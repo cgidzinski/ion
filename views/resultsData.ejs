@@ -41,25 +41,58 @@ var scatterChart = new Chart(ctx, {
     
     data: {
         datasets: [{
+            borderColor: '#ff9900',
+            backgroundColor: '#ffb84d',
+            pointRadius: 1,
             data: myDATA
         }]
     },
     options: {
+        
+        legend: {
+            display: false
+        },
+
         title: {
             display: true,
+            fontColor: 'yellow',
+            fontSize: 20, 
             text: 'FINAL SPECTRUM'
         },
+        
         scales: {
+
             yAxes: [{
+                ticks:{
+                    fontColor: '#ffff99',
+                    max: 14000,
+                    beginAtZero: true
+                },
+                gridLines:{
+                    color:'#ffff99',
+                    drawBorder: true
+                },
                 scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
+                fontColor:'#ffff99',
                 padding: '10'
                 }
             }],
             xAxes: [{
+                ticks:{
+                    fontColor: '#ffff99',
+                    max: 900,
+                    min: 300,
+                    stepSize: 100
+                },
+                gridLines:{
+                    color:'#ffff99',
+                    drawBorder: true
+                },
                 scaleLabel: {
                 display: true,
+                fontColor:'#ffff99',
                 labelString: 'WAVELENGTH (nm)'
                 }
             }]
