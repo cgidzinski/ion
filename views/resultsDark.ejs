@@ -48,12 +48,10 @@ var ctx = document.getElementById("myChart");
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
     options: {
-         legend: {
+        legend: {
             display: false
          }
     data: {
-        strokeColor: '#ffff00',
-        pointColor: '#ffff00',
         datasets: [{
             data: myDATA
         }]
@@ -65,8 +63,10 @@ var scatterChart = new Chart(ctx, {
         },
         scales: {
             yAxes: [{
-                maximum: 15000,
-                minium: 0,
+                ticks: {
+                    maximum: 15000,
+                    beginAtZero: true,
+                    }
                 scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
@@ -74,8 +74,11 @@ var scatterChart = new Chart(ctx, {
                 }
             }],
             xAxes: [{
-                maximum:800,
-                minimum:400,
+                ticks: {
+                    maximum:800,
+                    minimum:400,
+                }
+                
                 scaleLabel: {
                 display: true,
                 labelString: 'WAVELENGTH (nm)'
