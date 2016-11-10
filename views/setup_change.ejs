@@ -10,27 +10,39 @@
 <div class="uk-grid">
     <div class="uk-width-medium-8-10">
     <div class="uk-panel uk-panel-box">                             
-        <strong><h1>Default Parameters</h1></strong>
-        
-
-<h3><button class="uk-button" onclick="num(-1,'aqNumber')">-</button> # of Aq.: <input id="aqNumber" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'aqNumber')">+</button></h3>
-<h3><button class="uk-button" onclick="num(-2500,'intTime')">-</button>  Int. Time: <input id="intTime" type="text"/>&nbsp<button class="uk-button" onclick="num(+2500,'intTime')">+</button></h3>
-<h3><button class="uk-button" onclick="num(-1,'scanAvg')">-</button>  Scan Avg.: <input id="scanAvg" type="text"/>&nbsp<button class="uk-button" onclick="num(+1,'scanAvg')">+</button></h3>
-<h3><button class="uk-button" onclick="num(-5,'boxCar')">-</button>   Box Car: <input id="boxCar" type="text"/>&nbsp<button class="uk-button" onclick="num(+5,'boxCar')">+</button></h3>
-<h3><button class="uk-button" onclick="num(-5000,'seqInt')">-</button>   Seq Int.: <input id="seqInt" type="text"/>&nbsp<button class="uk-button" onclick="num(+5000,'seqInt')">+</button></h3>
-<h3>  Prefix: YY_MM_DD_<select id="prefix" type="select"/>
+        <strong>
+        <h1>Acquisition Parameters</h1>
+        </strong>
+        <hr>
+<h3>
+<table align="center" style="margin: 0px auto;">
+<tr>
+<td></td> <td>Prefix:</td><td><select id="prefix" type="select"/>
 
   <option>TEST</option>
   <option>K+</option>
   <option>Ca2+</option>
   <option>DATA</option>
   </select>
-&nbsp</h3>
-<input id='date' name="date" style="width: 500px"/> 
+</td><td></td><td></td></tr> 
+<tr>
+<td><button class="uk-button" onclick="num(-1,'aqNumber')">-</button></td><td> # of Aq.: </td><td><input id="aqNumber" type="text"/></td><td>(#)</td><td>&nbsp<button class="uk-button" onclick="num(+1,'aqNumber')">+</button></td></tr>
+<tr>
+<td><button class="uk-button" onclick="num(-2500,'intTime')">-</button></td><td>  Int. Time: </td><td><input id="intTime" type="text"/></td><td>(&mu;s)</td><td>&nbsp<button class="uk-button" onclick="num(+2500,'intTime')">+</button></td></tr>
+<tr>
+<td><button class="uk-button" onclick="num(-1,'scanAvg')">-</button></td><td>  Scan Avg.:</td><td><input id="scanAvg" type="text"/></td><td>(#)</td><td>&nbsp<button class="uk-button" onclick="num(+1,'scanAvg')">+</button></td></tr>
+<tr>
+<td><button class="uk-button" onclick="num(-5,'boxCar')">-</button></td><td>   Box Car: </td><td><input id="boxCar" type="text"/></td><td>(px)</td><td>&nbsp<button class="uk-button" onclick="num(+5,'boxCar')">+</button></td></tr>
+<tr>
+<td><button class="uk-button" onclick="num(-5000,'seqInt')">-</button></td><td>   Seq Int.: </td><td><input id="seqInt" type="text"/></td><td>(ms)</td><td>&nbsp<button class="uk-button" onclick="num(+5000,'seqInt')">+</button></td></tr>
+
+</table>
+</h3>
 <hr>
-            
-            <button class="uk-button uk-button-danger uk-button-large"  onclick="setDefaults()">Restore Defaults</button>
+<center>
+            <button class="uk-button uk-button-danger uk-button-large"  onclick="setDefaults()">System Defaults</button>
             <button class="uk-button uk-button-danger uk-button-large"  onclick="done()">Save</button>
+</center>    
     </div>
 </div>
 
@@ -38,27 +50,7 @@
 </html>
 
 <script>
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1);
-        day = '' + d.getDate();
-        year = d.getFullYear();
-        hour = d.getHours();
-        min = d.getMinutes();
-        sec = d.getSeconds();
 
-        
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    if (hour.length < 2) hour = '0' + hour;
-    if (min.length < 2) min = '0' + min;
-    if (sec.length < 2) sec = '0' + sec;
-
-    return [year, month, day].join('-') + 'T' + [hour, min, sec].join('-');
-}
-
-document.getElementById('date').value = formatDate(Date());
 
 
  $(document).ready ( function(){
