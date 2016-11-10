@@ -38,7 +38,7 @@ var myDATA = [];
 var ctx = document.getElementById("myChart");
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
-    color: '#ffff00',
+    
     data: {
         datasets: [{
             data: myDATA
@@ -51,10 +51,13 @@ var scatterChart = new Chart(ctx, {
         },
         scales: {
             yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
                 scaleLabel: {
-                display: true,
-                labelString: 'INTENSITY (counts)',
-                padding: '10'
+                    display: true,
+                    labelString: 'INTENSITY (counts)',
+                    padding: '10'
                 }
             }],
             xAxes: [{
