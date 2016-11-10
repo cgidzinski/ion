@@ -38,9 +38,7 @@ var myDATA = [];
 var ctx = document.getElementById("myChart");
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
-    legend: {
-        display: false
-    }
+    
     data: {
         datasets: [{
             data: myDATA
@@ -49,7 +47,7 @@ var scatterChart = new Chart(ctx, {
     options: {
         title: {
             display: true,
-            fontColor: '#ffff00',
+            fontColor: 'yellow',
             text: 'FINAL SPECTRUM'
         },
         scales: {
