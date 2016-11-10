@@ -38,7 +38,7 @@ var myDATA = [];
 var ctx = document.getElementById("myChart");
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
-    color:'#ffff00',
+    color: '#ffff00',
     data: {
         datasets: [{
             data: myDATA
@@ -49,23 +49,21 @@ var scatterChart = new Chart(ctx, {
             display: true,
             text: 'DARK SPECTRUM'
         },
-        
-    },
-    scales: {
-        yAxes: [{
-            scaleLabel: {
+        scales: {
+            yAxes: [{
+                scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
                 padding: '10'
-            }
-        }],
-        xAxes: [{
-            scaleLabel: {
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
                 display: true,
                 labelString: 'WAVELENGTH (nm)'
-            }
-        }]
+                }
+            }]
+        }
     }
-    }
-);
+});
 </script>
