@@ -41,8 +41,8 @@ var scatterChart = new Chart(ctx, {
     
     data: {
         datasets: [{
-            borderColor: 'yellow',
-            backgroundColor: '#ffd700',
+            borderColor: '#0099cc',
+            backgroundColor: '#33ccff',
             data: myDATA
         }]
     },
@@ -60,10 +60,15 @@ var scatterChart = new Chart(ctx, {
         },
         
         scales: {
+            ticks: {
+                fontColor: 'yellow'
+            },
             yAxes: [{
                 scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
+                beginAtZero: true,
+                max: 15000,
                 padding: '10'
                 }
             }],
