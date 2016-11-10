@@ -27,17 +27,8 @@
 
 
 
-
-                      
+           
 <script>
-//------------------------------------------------// 
-// DISPLAY OF DARK SPECTRUM  
-// Plot of the dark spectrum just recorded as a spot-check
-// Accept it if it looks good
-// Move on to Reference Spectrum Collect
-//------------------------------------------------//
-
-
 var spec = [<%= spectrum %>];
 var wave = [<%= wavelength %>];
 var myDATA = [];
@@ -47,7 +38,7 @@ var myDATA = [];
 var ctx = document.getElementById("myChart");
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
-   
+    color:'#ffff00',
     data: {
         datasets: [{
             data: myDATA
@@ -58,30 +49,26 @@ var scatterChart = new Chart(ctx, {
             display: true,
             text: 'DARK SPECTRUM'
         },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    maximum: 15000,
-                    beginAtZero: true,
-                    }
-                scaleLabel: {
+        legend: {
+            display: false,
+
+        }
+    },
+    scales: {
+        yAxes: [{
+            scaleLabel: {
                 display: true,
                 labelString: 'INTENSITY (counts)',
                 padding: '10'
-                }
-            }],
-            xAxes: [{
-                ticks: {
-                    maximum:800,
-                    minimum:400,
-                }
-                
-                scaleLabel: {
+            }
+        }],
+        xAxes: [{
+            scaleLabel: {
                 display: true,
                 labelString: 'WAVELENGTH (nm)'
-                }
-            }]
-        }
+            }
+        }]
     }
-});
+    }
+);
 </script>
