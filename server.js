@@ -36,10 +36,13 @@ var wait = 1000;
 //   led.writeSync(0);  // Turn LED off. 
 //   led.unexport();    // Unexport GPIO and free resources 
 // }, 5000);
+led.writeSync(1);
 
- led.writeSync(1);
- delay (wait);
- led.writeSync(0);
+ setTimeout(function (){
+ 	led.writeSync(0);
+ }, wait);
+
+ 
 // Cors
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
