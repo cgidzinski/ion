@@ -22,14 +22,6 @@
 // Labeled with prefix DARK
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
-
-var time = 2000
-var timer;
-
-$(document).ready ( function(){
- timer = setInterval(function(){ countdown(); }, 1000);
-});
-
 var iv = setInterval(function(){
 	led.writeSync(led.readSync() === 0 ? 1 : 0)
 }, 500);
@@ -40,6 +32,16 @@ setTimeout(function() {
     led.writeSync(0);  // Turn LED off.
     
 }, 5000);
+
+
+var time = 2000
+var timer;
+
+$(document).ready ( function(){
+ timer = setInterval(function(){ countdown(); }, 1000);
+});
+
+
 
 countdown = function(){
 if ( time <= 0)
