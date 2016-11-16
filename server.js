@@ -37,6 +37,7 @@ var wait = 1000;
 //   led.unexport();    // Unexport GPIO and free resources 
 // }, 5000);
 led.writeSync(0);
+led.unexport(); 
 
 
 
