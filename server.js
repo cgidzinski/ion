@@ -25,7 +25,7 @@ var iv = setInterval(function(){
 setTimeout(function() {
     clearInterval(iv); // Stop blinking
     led.writeSync(0);  // Turn LED off.
-    
+    led.unexport(); 
 }, 5000);
 
 // var Gpio = require('onoff').Gpio,led = new Gpio(26, 'out');
