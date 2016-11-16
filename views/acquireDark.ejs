@@ -30,6 +30,8 @@ $(document).ready ( function(){
  timer = setInterval(function(){ countdown(); }, 1000);
 });
 
+gpio.setup(13, gpio.DIR_OUT, on);
+
 countdown = function(){
 if ( time <= 0)
 {
