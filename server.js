@@ -15,6 +15,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var request = require('request');
 var favicon = require('serve-favicon');
+var gpio = require ('rpi-gpio');
 // var Gpio = require('onoff').Gpio,led = new Gpio(26, 'out');
 
 // setTimeout(function () {
@@ -45,6 +46,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(gpio(13, gpio.DIR_OUT, write)); // access IO 
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(express.static(__dirname + '/public'));
