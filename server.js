@@ -16,7 +16,7 @@ var bodyParser   = require('body-parser');
 var request = require('request');
 var favicon = require('serve-favicon');
 
-//var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
+var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
 //var wait = 1000;
 //var iv = setInterval(function(){
 //	led.writeSync(led.readSync() === 0 ? 1 : 0)
@@ -36,7 +36,7 @@ var favicon = require('serve-favicon');
 //   led.writeSync(0);  // Turn LED off. 
 //   led.unexport();    // Unexport GPIO and free resources 
 // }, 5000);
-//led.writeSync(0);
+led.writeSync(0);
 //led.unexport(); 
 
 
