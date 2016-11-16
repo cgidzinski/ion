@@ -17,7 +17,7 @@ var request = require('request');
 var favicon = require('serve-favicon');
 
 var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
-
+var wait = 1000;
 //var iv = setInterval(function(){
 //	led.writeSync(led.readSync() === 0 ? 1 : 0)
 //}, 500);
@@ -38,7 +38,7 @@ var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
 // }, 5000);
 
  led.writeSync(1);
- wait
+ delay (wait);
  led.writeSync(0);
 // Cors
 app.use(function(req, res, next) {
