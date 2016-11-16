@@ -38,9 +38,9 @@ var wait = 1000;
 // }, 5000);
 led.writeSync(1);
 
- setTimeout(function (){
+setTimeout(function (){
  	led.writeSync(0);
- }, wait);
+}, wait);
 
  
 // Cors
