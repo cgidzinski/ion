@@ -61,7 +61,12 @@
                             </div>
 
 </div><br>
+
+</body>
+
 <script>
+
+var diskspace = require('diskspace');
 
 diskspace.check('/', function (err, total, free, status)
 {
@@ -71,10 +76,9 @@ diskspace.check('/', function (err, total, free, status)
   document.write('Status: ' + status);
 });
 
-document.write('wtf');
+
 
 
 </script>
-</body>
     </html>
 
