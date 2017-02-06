@@ -18,7 +18,11 @@ var favicon = require('serve-favicon');
 
 var diskspace = require('diskspace');
 
-
+diskspace.check('/', function (err, total, free, status)
+{
+    console.log (total);
+    console.log (free);
+});
 
 //var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
 //var wait = 1000;
@@ -64,6 +68,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(express.static(__dirname + '/public'));
+
+
+
 // required for passport
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes ======================================================================
