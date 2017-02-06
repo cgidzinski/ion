@@ -1,0 +1,61 @@
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard V1</title>
+    <%= include /partials/header.ejs %>
+
+</head>
+<body>
+
+<div style="width: 40%; float:left">
+   S<br>
+   <center><img src="./images/CESRF_LOGO.png" alt="" width="250" align="middle"></center>
+</div>
+
+<div style="width: 60%; float:right">
+   		<br><br>
+		<h1><font face="Forte" color="yellow">Guten Tag!</font></h1>
+		<br>
+		<h1>M.O.E. V2.0</h1>
+		<h3>(Mobile Optrode Engine)</h3>
+		<br>
+		<h3>Developed at CESRF - Guelph, Canada</h3>
+		<h3> Cody Thompson & Colin Gidzinski</h3>
+		<h4>2017</h4>
+		<br>
+</div>
+
+
+
+
+
+</body>
+<script type="text/javascript">
+//----------------------------------------------------------------------------------//  
+// ACQUIRE DARK SPECTRUM SEQUENCE 
+// Needs to snap a single measurement with default int time, scans to average, and boxcar
+// Labeled with prefix DARK
+// No pulse for light source, measures background buzz of spectrometer
+//----------------------------------------------------------------------------------// 
+
+var time = 10000;
+var timer;
+
+$(document).ready ( function(){
+ timer = setInterval(function(){ countdown(); }, 1000);
+});
+
+countdown = function(){
+if ( time <= 0)
+{
+window.location.href = "/";
+clearInterval(timer);
+}
+else
+{
+time = time - 1000;
+document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+}}
+</script>
+    </html>
+

@@ -7,6 +7,9 @@ module.exports = function(app, request) {
         app.get('/', function(req, res) {
             res.render('dashboard.ejs');
         });
+        app.get('/welcome', function(req, res) {
+            res.render('welcome.ejs');
+        });
         app.get('/install01', function(req, res) {
             res.render('install01.ejs');
         });
