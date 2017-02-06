@@ -19,6 +19,7 @@ var favicon = require('serve-favicon');
 var diskspace = require('diskspace');
 
 
+
 //var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
 //var wait = 1000;
 
@@ -60,7 +61,6 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(express.static(__dirname + '/public'));
