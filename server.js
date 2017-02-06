@@ -16,20 +16,23 @@ var bodyParser   = require('body-parser');
 var request = require('request');
 var favicon = require('serve-favicon');
 
-var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
-var wait = 1000;
+var diskspace = require('diskspace');
 
 
-var iv = setInterval(function(){
-	led.writeSync(led.readSync() === 0 ? 1 : 0)
-}, 500);
+//var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
+//var wait = 1000;
+
+
+//var iv = setInterval(function(){
+//	led.writeSync(led.readSync() === 0 ? 1 : 0)
+//}, 500);
  
 // Stop blinking the LED and turn it off after 5 seconds.
-setTimeout(function() {
-    clearInterval(iv); // Stop blinking
-    led.writeSync(0);  // Turn LED off.
-    led.unexport();    // Unexport GPIO and free resources
-}, 5000);
+//setTimeout(function() {
+//    clearInterval(iv); // Stop blinking
+//    led.writeSync(0);  // Turn LED off.
+//    led.unexport();    // Unexport GPIO and free resources
+//}, 5000);
 
 
 
