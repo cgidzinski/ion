@@ -1,11 +1,26 @@
 // intialize settings storage variables
 
-module.exports = function(app, request) {
+module.exports = function(app, request,diskspace,Gpio) {
         // =============================================================================
         // ROOT ========================================================================
         // =============================================================================
         app.get('/', function(req, res) {
-            res.render('dashboard.ejs');
+           
+           diskspace.check('C', function (err, total, free, status)
+            {
+            res.render('dashboard.ejs',{
+            mTotal: total,
+            mFree: free
+            })
+
+
+        })
+
+
+
+
+
+
         });
         app.get('/welcome', function(req, res) {
             res.render('welcome.ejs');
@@ -62,6 +77,22 @@ module.exports = function(app, request) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
+
+            var led = new Gpio(27, 'out');
+            var wait = 1000;
+
+            var iv = setInterval(function(){
+            led.writeSync(led.readSync() === 0 ? 1 : 0)
+            }, 500);
+ 
+            //Stop blinking the LED and turn it off after 5 seconds.
+            setTimeout(function() {
+            clearInterval(iv); // Stop blinking
+            led.writeSync(0);  // Turn LED off.
+            led.unexport();    // Unexport GPIO and free resources
+            }, 5000);
+
+
             res.render('acquireRefr.ejs');
         });
         app.get('/acquireDark', function(req, res) {

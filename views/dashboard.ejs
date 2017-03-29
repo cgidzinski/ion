@@ -9,7 +9,7 @@
 
 
 
-
+<div  style="float:left;width:570px;">
  <div class="uk-vertical-align " uk-padding-remove>
  <div class="uk-grid uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}" data-uk-grid-margin>
                                 
@@ -60,22 +60,53 @@
                                 </div>
                             </div>
 
-</div><br>
-<script>
+</div>
+</div>
+<br>
 
+<div style="float:left;width: 100px;">
+<center>
+<canvas id="myCanvas" height="350" width="55" >
 
-//diskspace.check('/', function (err, total, free, status)
-//{
-    
-//});
+</canvas>
+</center>
+</div>
 
-document.write("TESTY2");
-
-
-
-</script>
 </body>
 
+<script>
+var total = [<%= mTotal %>]/1000000000;
+var free = [<%= mFree %>]/1000000000;
+var used = total - free;
+var percent = (used/total)*100;
+var whole = percent.toPrecision(2);
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+
+ctx.beginPath();
+ctx.lineWidth="6";
+ctx.strokeStyle="white";
+ctx.fillStyle = "white";
+ctx.fillRect(0 ,25 ,55,total);
+ctx.stroke(); 
+
+ctx.beginPath();
+ctx.lineWidth="6";
+ctx.strokeStyle="green";
+ctx.fillStyle = "green";
+ctx.fillRect(0,total-used+25,55,used);
+ctx.stroke(); 
+
+ctx.beginPath();
+ctx.textAlign="center";
+ctx.font = "10px Arial";
+ctx.fillStyle = "WHITE";
+ctx.fillText("MEMORY",27.5,22);
+ctx.font = "20px Arial";
+ctx.fillStyle = "BLACK";
+ctx.fillText(whole + '%',27.5,44);
+</script>
 
     </html>
 

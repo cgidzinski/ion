@@ -18,26 +18,23 @@ var favicon = require('serve-favicon');
 
 var diskspace = require('diskspace');
 
-diskspace.check('/', function (err, total, free, status)
-{
-    console.log (total);
-    console.log (free);
-});
 
-//var Gpio = require('onoff').Gpio, led = new Gpio(27, 'out');
-//var wait = 1000;
+var Gpio = require('onoff').Gpio;
+
+// var led = new Gpio(27, 'out');
+// var wait = 1000;
 
 
-//var iv = setInterval(function(){
-//	led.writeSync(led.readSync() === 0 ? 1 : 0)
-//}, 500);
+// var iv = setInterval(function(){
+// 	led.writeSync(led.readSync() === 0 ? 1 : 0)
+// }, 500);
  
 // Stop blinking the LED and turn it off after 5 seconds.
-//setTimeout(function() {
+// setTimeout(function() {
 //    clearInterval(iv); // Stop blinking
 //    led.writeSync(0);  // Turn LED off.
 //    led.unexport();    // Unexport GPIO and free resources
-//}, 5000);
+// }, 5000);
 
 
 
@@ -74,7 +71,7 @@ app.use(express.static(__dirname + '/public'));
 // required for passport
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes ======================================================================
-require('./routes/root.js')(app,request);
+require('./routes/root.js')(app,request,diskspace,Gpio);
 require('./routes/404.js')(app);
 // launch ======================================================================
 
