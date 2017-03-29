@@ -77,20 +77,57 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
-
+            var scanAvg = localStorage.getItem("scanAvg");
+            var intTime = localStorage.getItem("intTime");
+            var boxCar = localStorage.getItem("boxCar");
+            
+            // Specify what output PIN is used for light control
             var led = new Gpio(27, 'out');
-            var wait = 1000;
+            var onTime = ((intTime + 10000)/1000)*scanAvg;
+            var time = onTime;
 
-            var iv = setInterval(function(){
-            led.writeSync(led.readSync() === 0 ? 1 : 0)
-            }, 500);
+            $(document).ready ( function(){
+
+            led.writeSync(1);
+            
+            setTimeout(function(){}, onTime);
+
+            led.writeSync(0);
+
+            led.unexport(); 
+            });
+            // var timer;
+
+            // $(document).ready (function(){
+            // timer = setInterval(function(){ 
+            //     countdown(); 
+            // }, onTime);
+            // });
+
+            // countdown = function(){
+            // if ( time <= 0)
+            // {
+            // window.location.href = "/resultsRefr";
+            // clearInterval(timer);
+            // }
+            // else
+            // {
+            // time = time - ;
+            // // document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+            // }}
+
+
+
+
+           
+
  
             //Stop blinking the LED and turn it off after 5 seconds.
-            setTimeout(function() {
-            clearInterval(iv); // Stop blinking
-            led.writeSync(0);  // Turn LED off.
-            led.unexport();    // Unexport GPIO and free resources
-            }, 5000);
+            // setTimeout(function() {
+            // clearInterval(iv); // Stop blinking
+            // led.writeSync(0);  // Turn LED off.
+            // led.unexport();    // Unexport GPIO and free resources
+            // }, 5000);
 
 
             res.render('acquireRefr.ejs');
