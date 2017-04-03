@@ -6,11 +6,11 @@ module.exports = function(app, request,diskspace,Gpio) {
         // =============================================================================
         app.get('/', function(req, res) {
            
-           diskspace.check('C', function (err, total, free, status)
+           diskspace.check('/', function (err, result)
             {
             res.render('dashboard.ejs',{
-            mTotal: total,
-            mFree: free
+            mTotal: result.total,
+            mFree: result.free
             })
 
 
@@ -77,58 +77,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
-            var scanAvg = localStorage.getItem("scanAvg");
-            var intTime = localStorage.getItem("intTime");
-            var boxCar = localStorage.getItem("boxCar");
-            
-            // Specify what output PIN is used for light control
-            var led = new Gpio(27, 'out');
-            var onTime = ((intTime + 10000)/1000)*scanAvg;
-            var time = onTime;
-
-            $(document).ready ( function(){
-
-            led.writeSync(1);
-            
-            setTimeout(function(){}, onTime);
-
-            led.writeSync(0);
-
-            led.unexport(); 
-            });
-            // var timer;
-
-            // $(document).ready (function(){
-            // timer = setInterval(function(){ 
-            //     countdown(); 
-            // }, onTime);
-            // });
-
-            // countdown = function(){
-            // if ( time <= 0)
-            // {
-            // window.location.href = "/resultsRefr";
-            // clearInterval(timer);
-            // }
-            // else
-            // {
-            // time = time - ;
-            // // document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
-            // }}
-
-
-
-
-           
-
- 
-            //Stop blinking the LED and turn it off after 5 seconds.
-            // setTimeout(function() {
-            // clearInterval(iv); // Stop blinking
-            // led.writeSync(0);  // Turn LED off.
-            // led.unexport();    // Unexport GPIO and free resources
-            // }, 5000);
-
+        
 
             res.render('acquireRefr.ejs');
         });
@@ -147,7 +96,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var wavelengthdata = body.split(" ");
-                    //gettectemperature
+            
                     request('http://192.168.42.1/cgi-bin/currentspectrum.php', { timeout: 1500 }, function(error, response, body) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
