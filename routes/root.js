@@ -76,8 +76,18 @@ module.exports = function(app, request,diskspace,Gpio) {
         app.get('/collectTest', function(req, res) {
             res.render('collectTest.ejs');
         });
-        app.get('/acquireRefr', function(req, res,Gpio) {
+        app.get('/acquireRefr', function(req, res) {
         
+            var led = new Gpio(27, 'out');
+
+            led.writeSync(1);
+
+            setTimeout(function(){}, onTime);
+
+            led.writeSync(0);
+
+            led.unexport(); 
+            });
 
             res.render('acquireRefr.ejs');
         });
