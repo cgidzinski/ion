@@ -86,7 +86,7 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             
 
-            res.render('acquireRefr.ejs');
+            
 
 
 
@@ -112,6 +112,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             time = time - 1000;
             document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
             }}  
+            res.render('acquireRefr.ejs');
         });
         
         app.get('/acquireDark', function(req, res) {
