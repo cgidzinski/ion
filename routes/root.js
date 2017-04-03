@@ -82,12 +82,11 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             led.writeSync(1);
 
-            setTimeout(function(){}, 1500);
+            setTimeout(function(){led.writeSync(0);}, 1500);
 
-            led.writeSync(0);
+            
 
             led.unexport(); 
-            });
 
             res.render('acquireRefr.ejs');
         });
