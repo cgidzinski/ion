@@ -80,16 +80,40 @@ module.exports = function(app, request,diskspace,Gpio) {
         
             var led = new Gpio(27, 'out');
 
-            led.writeSync(1);
+            
 
-            setTimeout(function(){led.writeSync(0);}, 1500);
+            // setTimeout(function(){led.writeSync(0);}, 5000);
 
             
 
-            led.unexport(); 
-
             res.render('acquireRefr.ejs');
+
+
+
+            var time = 7000
+            var timer;
+
+            $(document).ready ( function(){
+ 
+            led.writeSync(1);    
+            timer = setInterval(function(){ countdown(); }, 1000);
+            });
+
+            countdown = function(){
+            if ( time <= 0)
+            {
+            led.writeSync(0);
+            led.unexport(); 
+            window.location.href = "/resultsRefr";
+            clearInterval(timer);
+            }
+            else
+            {
+            time = time - 1000;
+            document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+            }}  
         });
+        
         app.get('/acquireDark', function(req, res) {
             res.render('acquireDark.ejs');
         });

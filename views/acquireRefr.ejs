@@ -80,25 +80,25 @@
 
 
 
-var time = 2000
-var timer;
+// var time = 2000
+// var timer;
 
-$(document).ready ( function(){
- //led.writeSync(1);	
- timer = setInterval(function(){ countdown(); }, 1000);
-});
+// $(document).ready ( function(){
+//  //led.writeSync(1);	
+//  timer = setInterval(function(){ countdown(); }, 1000);
+// });
 
-countdown = function(){
-if ( time <= 0)
-{
-	//led.writeSync(0);
-window.location.href = "/resultsRefr";
-clearInterval(timer);
-}
-else
-{
-time = time - 1000;
-document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
-}}
+// countdown = function(){
+// if ( time <= 0)
+// {
+// 	//led.writeSync(0);
+// window.location.href = "/resultsRefr";
+// clearInterval(timer);
+// }
+// else
+// {
+// time = time - 1000;
+// document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
+// }}
 </script>
     </html>
