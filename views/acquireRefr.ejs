@@ -32,10 +32,11 @@
             var onTime = ((intTime + 10000)/1000)*scanAvg;
             //var time = onTime;
 
-      //       $(document).ready ( function(){
+      // $(document).ready ( function(){
 
-            led.writeSync(1);
             
+      
+      // }      
       //       setTimeout(function(){}, onTime);
 
       //       led.writeSync(0);
@@ -83,6 +84,7 @@ var time = 2000
 var timer;
 
 $(document).ready ( function(){
+ led.writeSync(1);	
  timer = setInterval(function(){ countdown(); }, 1000);
 });
 
