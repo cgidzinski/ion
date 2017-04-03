@@ -76,7 +76,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         app.get('/collectTest', function(req, res) {
             res.render('collectTest.ejs');
         });
-        app.get('/acquireRefr', function(req, res) {
+        app.get('/acquireRefr', function(req, res,Gpio) {
         
 
             res.render('acquireRefr.ejs');
