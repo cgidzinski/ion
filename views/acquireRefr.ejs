@@ -23,18 +23,18 @@
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
 
-   			// var scanAvg = localStorage.getItem("scanAvg");
-      //       var intTime = localStorage.getItem("intTime");
+   			var scanAvg = localStorage.getItem("scanAvg");
+            var intTime = localStorage.getItem("intTime");
             
             
-      //       // Specify what output PIN is used for light control
-      //       var led = new Gpio(27, 'out');
-      //       var onTime = ((intTime + 10000)/1000)*scanAvg;
-      //       var time = onTime;
+            // Specify what output PIN is used for light control
+            var led = new Gpio(27, 'out');
+            var onTime = ((intTime + 10000)/1000)*scanAvg;
+            //var time = onTime;
 
       //       $(document).ready ( function(){
 
-      //       led.writeSync(1);
+            led.writeSync(1);
             
       //       setTimeout(function(){}, onTime);
 
@@ -89,6 +89,7 @@ $(document).ready ( function(){
 countdown = function(){
 if ( time <= 0)
 {
+	led.writeSync(0);
 window.location.href = "/resultsRefr";
 clearInterval(timer);
 }
