@@ -105,9 +105,9 @@ module.exports = function(app, request,diskspace,Gpio) {
             var timer;
 
             res.render('acquireData.ejs', {
-                readInt: readInt,
-                intTime: intTime,
-                aqNumber: aqNumber
+                // readInt: readInt,
+                // intTime: intTime,
+                // aqNumber: aqNumber
             });
 
             console.log(readInt);
