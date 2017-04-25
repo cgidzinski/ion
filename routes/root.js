@@ -99,7 +99,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             
             // GET INTERVAL TIME
             //var readInt = parseInt(localStorage.getItem("seqInt"));
-            var readInt;
+            var readInt = 'readInt';
             var intTime;
             var aqNumber;
             var timer;
