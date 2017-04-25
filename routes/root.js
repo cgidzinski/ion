@@ -102,7 +102,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             var intTime = 100;
             // var aqNumber;
             var timer;
-            var time = 100000;
+            var time = 50000;
 
 
             // SET UP LED FOR BLINK
@@ -222,6 +222,8 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
+
+
             res.render('stop.ejs');
         });
         app.get('/shutdown', function(req, res) {
