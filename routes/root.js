@@ -102,26 +102,21 @@ module.exports = function(app, request,diskspace,Gpio) {
             
             // GET INTERVAL TIME
             //var readInt = parseInt(localStorage.getItem("seqInt"));
-            // var readInt = req.param('readInt');
-            // var intTime;
+            var readInt = 10000;
+            var intTime = 100000;
             // var aqNumber;
             var timer;
 
-            
-
-            console.log(global.readInt);
-            console.log(global.intTime);
-            console.log(global.aqNumber);
 
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
 
-            timer = setInterval(function(){blinker(); }, global.readInt);
+            timer = setInterval(function(){blinker(); }, readInt);
 
             blinker = function(){
             
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, global.intTime);            
+                setTimeout(function(){led.writeSync(0);}, intTime);            
 
             };
 
