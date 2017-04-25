@@ -78,11 +78,11 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/acquireRefr', function(req, res) {
         
-            var led = new Gpio(27, 'out');
+            // var led = new Gpio(27, 'out');
 
             
 
-            // setTimeout(function(){led.writeSync(0);}, 5000);
+            // // setTimeout(function(){led.writeSync(0);}, 5000);
 
             
 
@@ -90,12 +90,12 @@ module.exports = function(app, request,diskspace,Gpio) {
 
 
 
-            var time = 7000;
-            var timer;
-            led.writeSync(1);   
+            // var time = 7000;
+            // var timer;
+            // led.writeSync(1);   
 
 
-            led.unexport(); 
+            // // led.unexport(); 
             res.render('acquireRefr.ejs');
             
   
