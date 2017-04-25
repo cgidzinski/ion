@@ -113,19 +113,19 @@ module.exports = function(app, request,diskspace,Gpio) {
                 // aqNumber: aqNumber
             });
 
-            console.log(readInt);
-            console.log(intTime);
-            console.log(aqNumber);
+            console.log(global.readInt);
+            console.log(global.intTime);
+            console.log(global.aqNumber);
 
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
 
-            timer = setInterval(function(){blinker(); }, readInt);
+            timer = setInterval(function(){blinker(); }, global.readInt);
 
             blinker = function(){
             
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, intTime);            
+                setTimeout(function(){led.writeSync(0);}, global.intTime);            
 
             };
 
