@@ -106,6 +106,20 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('acquireDark.ejs');
         });
         app.get('/acquireData', function(req, res) {
+
+            // GET INTERVAL TIME
+            var readInt = parseInt(localStorage.getItem("seqInt"));
+
+
+            // SET UP LED FOR BLINK
+            var led = new Gpio(27, 'out');
+
+            led.writeSync(1);   
+            setTimeout(function(){led.writeSync(0);}, readInt);
+
+
+            // // led.unexport(); 
+
             res.render('acquireData.ejs');
         });
         app.get('/acquireTest', function(req, res) {
