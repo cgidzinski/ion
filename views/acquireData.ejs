@@ -18,8 +18,9 @@
 
 <script type="text/javascript">
 
-[<%= readInt %>] = localStorage.getItem("intTime");
-
+[<%= readInt %>] = localStorage.getItem("seqInt");
+[<%= intTime %>] = localStorage.getItem("intTime");
+[<%= aqNumber %>] = localStorage.getItem("aqNumber");
 
 // DETERMINE TOTAL DATA COLLECTION TIME FOR COUNTDOWN DISPLAY
 var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1000

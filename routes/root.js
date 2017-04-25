@@ -100,20 +100,36 @@ module.exports = function(app, request,diskspace,Gpio) {
             // GET INTERVAL TIME
             //var readInt = parseInt(localStorage.getItem("seqInt"));
             var readInt;
-
+            var intTime;
+            var aqNumber;
+            var totalTime = aqNumber * readInt;
 
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
 
+            timer = setInterval(function(){countdown(); }, readInt);
+
+            countdown = function(){
+            if ( totalTime <= 0)
+            {
+            
+            }
+            else
+            {
+            totalTime = totalTime - readInt;
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, readInt);
+            setTimeout(function(){led.writeSync(0);}, intTime);            
+            }}
+
 
 
             // led.unexport(); 
             
             
             res.render('acquireData.ejs', {
-                readInt: readInt
+                readInt: readInt,
+                intTime: intTime,
+                aqNumber: aqNumber
             });
 
         });
