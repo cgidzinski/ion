@@ -90,29 +90,16 @@ module.exports = function(app, request,diskspace,Gpio) {
 
 
 
-            var time = 7000
+            var time = 7000;
             var timer;
+            led.writeSync(1);   
 
-            $(document).ready ( function(){
- 
-            led.writeSync(1);    
-            timer = setInterval(function(){ countdown(); }, 1000);
-            });
 
-            countdown = function(){
-            if ( time <= 0)
-            {
-            led.writeSync(0);
             led.unexport(); 
-            window.location.href = "/resultsRefr";
-            clearInterval(timer);
-            }
-            else
-            {
-            time = time - 1000;
-            document.getElementById("countdown-holder").innerHTML = time/1000 + " Seconds Remaining";
-            }}  
             res.render('acquireRefr.ejs');
+            
+  
+            
         });
         
         app.get('/acquireDark', function(req, res) {
