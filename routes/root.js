@@ -109,9 +109,9 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             
 
-            // console.log(global.readInt);
-            // console.log(global.intTime);
-            // console.log(global.aqNumber);
+            console.log(global.readInt);
+            console.log(global.intTime);
+            console.log(global.aqNumber);
 
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
