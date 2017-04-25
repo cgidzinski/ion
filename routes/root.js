@@ -79,18 +79,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         app.get('/acquireRefr', function(req, res) {
         
             var led = new Gpio(27, 'out');
-
             
-
-
-            
-
-            
-
-
-
-            // var time = 7000;
-            // var timer;
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, 5000);
 
@@ -107,21 +96,21 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/acquireData', function(req, res) {
 
-             $(document).ready ( function(){
-            // GET INTERVAL TIME
-            //var readInt = parseInt(localStorage.getItem("seqInt"));
-            var readInt = 10000;
+            
+            // // GET INTERVAL TIME
+            // //var readInt = parseInt(localStorage.getItem("seqInt"));
+            // var readInt = 10000;
 
 
-            // SET UP LED FOR BLINK
-            var led = new Gpio(27, 'out');
+            // // SET UP LED FOR BLINK
+            // var led = new Gpio(27, 'out');
 
-            led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, readInt);
+            // led.writeSync(1);   
+            // setTimeout(function(){led.writeSync(0);}, readInt);
 
 
             // // led.unexport(); 
-            })
+            
             
             res.render('acquireData.ejs');
 
@@ -214,6 +203,9 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/setup_change', function(req, res) {
             res.render('setup_change.ejs');
+        });
+         app.get('/stop', function(req, res) {
+            res.render('stop.ejs');
         });
         app.get('/shutdown', function(req, res) {
             res.render('shutdown.ejs');
