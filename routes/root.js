@@ -1,4 +1,7 @@
 // intialize settings storage variables
+global.intTime;
+global.readInt;
+global.aqNumber;
 
 module.exports = function(app, request,diskspace,Gpio) {
         // =============================================================================
