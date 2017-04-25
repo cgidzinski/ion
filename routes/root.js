@@ -107,6 +107,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/acquireData', function(req, res) {
 
+             $(document).ready ( function(){
             // GET INTERVAL TIME
             //var readInt = parseInt(localStorage.getItem("seqInt"));
             var readInt = 10000;
@@ -120,8 +121,10 @@ module.exports = function(app, request,diskspace,Gpio) {
 
 
             // // led.unexport(); 
-
+            })
+            
             res.render('acquireData.ejs');
+
         });
         app.get('/acquireTest', function(req, res) {
             res.render('acquireTest.ejs');
