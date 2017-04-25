@@ -97,22 +97,24 @@ module.exports = function(app, request,diskspace,Gpio) {
         app.get('/acquireData', function(req, res) {
 
             
-            // // GET INTERVAL TIME
-            // //var readInt = parseInt(localStorage.getItem("seqInt"));
-            // var readInt = 10000;
+            // GET INTERVAL TIME
+            //var readInt = parseInt(localStorage.getItem("seqInt"));
+            var readInt;
 
 
-            // // SET UP LED FOR BLINK
-            // var led = new Gpio(27, 'out');
+            // SET UP LED FOR BLINK
+            var led = new Gpio(27, 'out');
 
-            // led.writeSync(1);   
-            // setTimeout(function(){led.writeSync(0);}, readInt);
+            led.writeSync(1);   
+            setTimeout(function(){led.writeSync(0);}, readInt);
 
 
-            // // led.unexport(); 
+            // led.unexport(); 
             
             
-            res.render('acquireData.ejs');
+            res.render('acquireData.ejs', {
+                readInt: readInt
+            });
 
         });
         app.get('/acquireTest', function(req, res) {
