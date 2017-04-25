@@ -21,9 +21,9 @@
 [<%= readInt %>] = localStorage.getItem("seqInt");
 [<%= intTime %>] = localStorage.getItem("intTime");
 [<%= aqNumber %>] = localStorage.getItem("aqNumber");
- console.log([<%= readInt %>]);
- console.log([<%= intTime %>]);
- console.log([<%= aqNumber %>]);
+ console.log(readInt);
+ console.log(intTime);
+ console.log(aqNumber);
 // DETERMINE TOTAL DATA COLLECTION TIME FOR COUNTDOWN DISPLAY
 var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1000
 var timer;
