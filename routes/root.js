@@ -111,14 +111,14 @@ module.exports = function(app, request,diskspace,Gpio) {
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
 
-            timer = setInterval(function(){blinker(); }, readInt);
+            // timer = setInterval(function(){blinker();}, readInt);
 
-            blinker = function(){
+            // blinker = function(){
             
                 led.writeSync(1);   
                 setTimeout(function(){led.writeSync(0);}, intTime);            
 
-            };
+            // };
 
             res.render('acquireData.ejs', {
                 // readInt: readInt,
