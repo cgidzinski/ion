@@ -108,6 +108,9 @@ module.exports = function(app, request,diskspace,Gpio) {
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
 
+            led.writeSync(1);   
+            setTimeout(function(){led.writeSync(0);}, intTime); 
+
             timer = setInterval(function(){blinker();}, readInt);
 
             blinker = function(){
@@ -223,6 +226,8 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
          app.get('/stop', function(req, res) {
 
+            led.unexport();
+            clearInterval(timer);
 
             res.render('stop.ejs');
         });
