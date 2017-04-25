@@ -1,7 +1,4 @@
 // intialize settings storage variables
-global.intTime;
-global.readInt;
-global.aqNumber;
 
 module.exports = function(app, request,diskspace,Gpio) {
         // =============================================================================
@@ -101,11 +98,11 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             
             // GET INTERVAL TIME
-            //var readInt = parseInt(localStorage.getItem("seqInt"));
             var readInt = 10000;
             var intTime = 100;
             // var aqNumber;
             var timer;
+            var time = 100000;
 
 
             // SET UP LED FOR BLINK
@@ -114,17 +111,20 @@ module.exports = function(app, request,diskspace,Gpio) {
             timer = setInterval(function(){blinker();}, readInt);
 
             blinker = function(){
-            
+            if ( time <= 0)
+            {
+                // close LED output and stop timer
+                led.unexport();
+                clearInterval(timer);
+            }
+            else
+            {
+                time = time - readInt;
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, intTime);            
+                setTimeout(function(){led.writeSync(0);}, intTime); 
+            }}
 
-            };
-
-            res.render('acquireData.ejs', {
-                // readInt: readInt,
-                // intTime: intTime,
-                // aqNumber: aqNumber
-            });
+            res.render('acquireData.ejs', {});
 
             // led.unexport(); 
             
