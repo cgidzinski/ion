@@ -104,6 +104,12 @@ module.exports = function(app, request,diskspace,Gpio) {
             var aqNumber;
             var timer;
 
+            res.render('acquireData.ejs', {
+                readInt: readInt,
+                intTime: intTime,
+                aqNumber: aqNumber
+            });
+
             console.log(readInt);
             console.log(intTime);
             console.log(aqNumber);
@@ -125,11 +131,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             // led.unexport(); 
             
             
-            res.render('acquireData.ejs', {
-                readInt: readInt,
-                intTime: intTime,
-                aqNumber: aqNumber
-            });
+            
 
         });
         app.get('/acquireTest', function(req, res) {
