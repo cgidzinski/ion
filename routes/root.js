@@ -107,15 +107,11 @@ module.exports = function(app, request,diskspace,Gpio) {
             // var aqNumber;
             var timer;
 
-            res.render('acquireData.ejs', {
-                // readInt: readInt,
-                // intTime: intTime,
-                // aqNumber: aqNumber
-            });
+            
 
-            console.log(global.readInt);
-            console.log(global.intTime);
-            console.log(global.aqNumber);
+            // console.log(global.readInt);
+            // console.log(global.intTime);
+            // console.log(global.aqNumber);
 
             // SET UP LED FOR BLINK
             var led = new Gpio(27, 'out');
@@ -129,7 +125,11 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             };
 
-
+            res.render('acquireData.ejs', {
+                // readInt: readInt,
+                // intTime: intTime,
+                // aqNumber: aqNumber
+            });
 
             // led.unexport(); 
             
