@@ -108,7 +108,8 @@ module.exports = function(app, request,diskspace,Gpio) {
         app.get('/acquireData', function(req, res) {
 
             // GET INTERVAL TIME
-            var readInt = parseInt(localStorage.getItem("seqInt"));
+            //var readInt = parseInt(localStorage.getItem("seqInt"));
+            var readInt = 10000;
 
 
             // SET UP LED FOR BLINK
