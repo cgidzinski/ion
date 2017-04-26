@@ -96,8 +96,8 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             
             // GET INTERVAL TIME
-            var readInt = 10000;
-            var intTime = global.intTime;
+            var readInt = global.newInterval;
+            var intTime = global.newIntTime;
             var time = 50000;
 
             console.log(global.readInt);
