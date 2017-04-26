@@ -3,8 +3,7 @@
 
 
 module.exports = function(app, request,diskspace,Gpio) {
-        var timer;
-        var led = new Gpio(27, 'out');
+        
         // =============================================================================
         // ROOT ========================================================================
         // =============================================================================
@@ -84,6 +83,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         
             
             
+            var led = new Gpio(27, 'out');
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, 5000);
 
@@ -104,13 +104,12 @@ module.exports = function(app, request,diskspace,Gpio) {
             // GET INTERVAL TIME
             var readInt = 10000;
             var intTime = 100;
-            // var aqNumber;
-            // var timer;
             var time = 50000;
 
 
             // SET UP LED FOR BLINK
-            // led = new Gpio(27, 'out');
+            var timer;
+            var led = new Gpio(27, 'out');
 
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, intTime); 
