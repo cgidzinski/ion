@@ -85,7 +85,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             
             res.render('acquireRefr.ejs');
             
-            led.unexport(); 
+            
             
         });
         
@@ -113,8 +113,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             blinker = function(){
             if ( time <= 0)
             {
-                // close LED output and stop timer
-                led.unexport();
+                //stop timer
                 clearInterval(timer);
             }
             else
