@@ -101,7 +101,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             var readInt = 10000;
             var intTime = 100;
             // var aqNumber;
-            timer;
+            var timer;
             var time = 50000;
 
 
