@@ -226,7 +226,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
          app.get('/stop', function(req, res) {
             var timer = setInterval(function(){}, 500);
-            var led = new Gpio(27, 'out');
+            var led = Gpio(27, 'out');
             led.unexport();
             clearInterval(timer);
 
