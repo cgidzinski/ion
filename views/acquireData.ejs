@@ -13,6 +13,8 @@
 
 
 
+
+
 </body>
 
 
@@ -21,11 +23,6 @@
 
 <script type="text/javascript">
 
-fs = require('fs');
-fs.writeFile('helloworld.txt', 'Hello World!', function (err) {
-  if (err) return console.log(err);
-  console.log('Hello World > helloworld.txt');
-});
 
 
 // DETERMINE TOTAL DATA COLLECTION TIME FOR COUNTDOWN DISPLAY
@@ -35,6 +32,14 @@ var timer;
 // DETERMINE INDIVIDUAL READING INTERVAL
 var readInt = parseInt(localStorage.getItem("seqInt"));
 
+setCookie(name, "dr. Swamp",);
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+} 
 
 $(document).ready ( function(){
  timer = setInterval(function(){ countdown(); }, 1000);
