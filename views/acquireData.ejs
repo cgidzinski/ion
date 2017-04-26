@@ -10,11 +10,9 @@
 
 <h3><button class="uk-button uk-button-danger uk-button-large" onclick="window.location.href='/stop'">Stop</button></h3>
 
-<form id="form1" runat="server">
- <input type="button" onclick="setHiddenElement('Some new value');" value="Set value" />
- <input type="hidden" id="hiddenElement" name="hiddenElement" runat="server" />
 
-</form>
+
+
 </body>
 
 
@@ -22,16 +20,8 @@
 
 
 <script type="text/javascript">
-function setHiddenElement(newValue)
-{
- document.getElementById('<%= hiddenElement.ClientID %>').value = localStorage.getItem("intTime");
-}
-// global.readInt = localStorage.getItem("seqInt");
-// global.intTime = localStorage.getItem("intTime");
-// global.aqNumber = localStorage.getItem("aqNumber");
- // console.log(global.readInt);
- // console.log(global.intTime);
- // console.log(global.aqNumber);
+
+;
 // DETERMINE TOTAL DATA COLLECTION TIME FOR COUNTDOWN DISPLAY
 var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1000
 var timer;

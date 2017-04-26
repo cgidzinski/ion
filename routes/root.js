@@ -97,12 +97,10 @@ module.exports = function(app, request,diskspace,Gpio) {
             
             // GET INTERVAL TIME
             var readInt = 5000;
-            var intTime =   hiddenElement.Value;
+            var intTime =   200;
             var time = 50000;
 
-            console.log(global.newInterval);
-            console.log(global.intTime);
-            console.log(global.aqNumber);
+            
 
             // SET UP LED FOR BLINK
             var timer;
