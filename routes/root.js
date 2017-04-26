@@ -78,10 +78,10 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/acquireRefr', function(req, res) {
         
-            var led = new Gpio(27, 'out');
+            global.led = new Gpio(27, 'out');
             
-            led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, 5000);
+            global.led.writeSync(1);   
+            setTimeout(function(){global.led.writeSync(0);}, 5000);
 
 
             // // led.unexport(); 
@@ -101,30 +101,30 @@ module.exports = function(app, request,diskspace,Gpio) {
             var readInt = 10000;
             var intTime = 100;
             // var aqNumber;
-            var timer;
+            global.timer;
             var time = 50000;
 
 
             // SET UP LED FOR BLINK
-            var led = new Gpio(27, 'out');
+            global.led = new Gpio(27, 'out');
 
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, intTime); 
+            setTimeout(function(){global.led.writeSync(0);}, intTime); 
 
-            timer = setInterval(function(){blinker();}, readInt);
+            global.timer = setInterval(function(){blinker();}, readInt);
 
             blinker = function(){
             if ( time <= 0)
             {
                 // close LED output and stop timer
-                led.unexport();
-                clearInterval(timer);
+                global.led.unexport();
+                clearInterval(global.timer);
             }
             else
             {
                 time = time - readInt;
-                led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, intTime); 
+                global.led.writeSync(1);   
+                setTimeout(function(){global.led.writeSync(0);}, intTime); 
             }}
 
             res.render('acquireData.ejs', {});
@@ -225,10 +225,9 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
-            var led;
-            var timer;
-            led.unexport();
-            clearInterval(timer);
+            
+            global.led.unexport();
+            clearInterval(global.timer);
 
             res.render('stop.ejs');
         });
