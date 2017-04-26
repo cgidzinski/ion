@@ -78,10 +78,10 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/acquireRefr', function(req, res) {
         
-            global.led = new Gpio(27, 'out');
+            led = new Gpio(27, 'out');
             
-            global.led.writeSync(1);   
-            setTimeout(function(){global.led.writeSync(0);}, 5000);
+            led.writeSync(1);   
+            setTimeout(function(){led.writeSync(0);}, 5000);
 
 
             // // led.unexport(); 
@@ -101,30 +101,30 @@ module.exports = function(app, request,diskspace,Gpio) {
             var readInt = 10000;
             var intTime = 100;
             // var aqNumber;
-            global.timer;
+            timer;
             var time = 50000;
 
 
             // SET UP LED FOR BLINK
-            global.led = new Gpio(27, 'out');
+            led = new Gpio(27, 'out');
 
             led.writeSync(1);   
-            setTimeout(function(){global.led.writeSync(0);}, intTime); 
+            setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            global.timer = setInterval(function(){blinker();}, readInt);
+            timer = setInterval(function(){blinker();}, readInt);
 
             blinker = function(){
             if ( time <= 0)
             {
                 // close LED output and stop timer
-                global.led.unexport();
-                clearInterval(global.timer);
+                led.unexport();
+                clearInterval(timer);
             }
             else
             {
                 time = time - readInt;
-                global.led.writeSync(1);   
-                setTimeout(function(){global.led.writeSync(0);}, intTime); 
+                led.writeSync(1);   
+                setTimeout(function(){led.writeSync(0);}, intTime); 
             }}
 
             res.render('acquireData.ejs', {});
@@ -225,9 +225,10 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
-            
-            global.led.unexport();
-            clearInterval(global.timer);
+            var timer = setInterval(function(){blinker();}, readInt);
+            var led = new Gpio(27, 'out');
+            led.unexport();
+            clearInterval(timer);
 
             res.render('stop.ejs');
         });
