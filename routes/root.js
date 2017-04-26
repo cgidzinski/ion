@@ -18,12 +18,6 @@ module.exports = function(app, request,diskspace,Gpio) {
 
 
         })
-
-
-
-
-
-
         });
         app.get('/welcome', function(req, res) {
             res.render('welcome.ejs');
@@ -88,10 +82,10 @@ module.exports = function(app, request,diskspace,Gpio) {
             setTimeout(function(){led.writeSync(0);}, 5000);
 
 
-            // // led.unexport(); 
+            
             res.render('acquireRefr.ejs');
             
-  
+            led.unexport(); 
             
         });
         
