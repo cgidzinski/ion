@@ -96,8 +96,8 @@ module.exports = function(app, request,diskspace,Gpio) {
 
             
             // GET INTERVAL TIME
-            var readInt = global.newInterval;
-            var intTime = global.intTime;
+            var readInt = 5000;
+            var intTime =  Request.Form[hiddenElement.ClientID];
             var time = 50000;
 
             console.log(global.newInterval);
