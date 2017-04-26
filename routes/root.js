@@ -97,11 +97,11 @@ module.exports = function(app, request,diskspace,Gpio) {
             
             // GET INTERVAL TIME
             var readInt = 5000;
-            var intTime =  Request.Form[hiddenElement.ClientID];
+            var intTime =   hiddenElement.Value;
             var time = 50000;
 
             console.log(global.newInterval);
-            console.log(global.newIntTime);
+            console.log(global.intTime);
             console.log(global.aqNumber);
 
             // SET UP LED FOR BLINK
