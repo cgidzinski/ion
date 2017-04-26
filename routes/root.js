@@ -221,10 +221,10 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
-            // var timer = setInterval(function(){}, 500);
+            var timer 
             // var led = Gpio(27, 'out');
             // led.unexport();
-            // clearInterval(timer);
+            clearInterval(timer);
 
             res.render('stop.ejs');
         });
