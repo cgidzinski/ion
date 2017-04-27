@@ -67,16 +67,16 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         });
         app.get('/collectDark', function(req, res) {
             console.log(req.query.folderName);
-            var fName = req.query.folderName;
+            
             fs.mkdir('/home/ocean/'+ req.query.folderName);
-            fs.chmodSync('/home/ocean/'+ req.query.folderName, '755');
+            fs.chmodSync('/home/ocean/'+ req.query.folderName, '777');
             process.chdir("/home/ion/ion");
 
 
           
 
             res.render('collectDark.ejs',{
-                    fNameTransfer: fName
+                    
                 });
 
         });
