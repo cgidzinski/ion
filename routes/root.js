@@ -2,7 +2,7 @@
 
 
 
-module.exports = function(app, request,diskspace,Gpio,fs) {
+module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                 var led = new Gpio(27, 'out');
                 var timer;
         // =============================================================================
@@ -68,6 +68,7 @@ module.exports = function(app, request,diskspace,Gpio,fs) {
         app.get('/collectDark', function(req, res) {
 
             fs.mkdir("/home/ocean/testy");
+            process.chdir("/home/ion/ion");
 
 
             res.render('collectDark.ejs');
