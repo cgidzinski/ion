@@ -67,7 +67,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         });
         app.get('/collectDark', function(req, res) {
                 console.log(req.query.folderName);
-            fs.mkdir("/home/ocean/testy");
+            fs.mkdir('/home/ocean/'+ req.query.folderName);
             process.chdir("/home/ion/ion");
 
 
