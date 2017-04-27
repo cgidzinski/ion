@@ -27,7 +27,8 @@
 // States current settings to be used
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
-
+localStorage.setItem("folderName",[<%= spectrum %>]);
+console.log(localStorage.getItem("folderName"));
 
 
 
@@ -53,8 +54,7 @@ function formatDate(date) {
 
  $(document).ready ( function(){
 
-localStorage.setItem("folderName",[<%= spectrum %>]);
-console.log(localStorage.getItem("folderName"));
+
 
 document.getElementById("paramCheck").style.color = "#ffffff";
 document.getElementById("paramCheck").style.fontSize = "large";
