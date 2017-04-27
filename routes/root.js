@@ -113,7 +113,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            timer = setInterval(function(){blinker();}, readInt);
+            timer = setInterval(function(){blinker();}, 3000);
 
             blinker = function(){
             if ( time <= 0)
