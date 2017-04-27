@@ -2,7 +2,7 @@
 
 
 
-module.exports = function(app, request,diskspace,Gpio) {
+module.exports = function(app, request,diskspace,Gpio,fs) {
                 var led = new Gpio(27, 'out');
                 var timer;
         // =============================================================================
@@ -67,14 +67,9 @@ module.exports = function(app, request,diskspace,Gpio) {
         });
         app.get('/collectDark', function(req, res) {
 
-                create();
+            fs.mkdir("/home/ocean/testy");
 
-             function create()
-    {
-        var myObject, newfolder;
-        myObject = new ActiveXObject("Scripting.FileSystemObject");
-        newfolder = myObject.CreateFolder ("/home/ocean/test");
-    }
+
             res.render('collectDark.ejs');
         });
         app.get('/collectData', function(req, res) {

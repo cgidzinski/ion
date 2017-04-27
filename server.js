@@ -16,6 +16,7 @@ var bodyParser   = require('body-parser');
 var request = require('request');
 var favicon = require('serve-favicon');
 
+var fs = require('fs');
 var diskspace = require('diskspace');
 
 var Gpio = require('onoff').Gpio;
@@ -49,7 +50,7 @@ app.use(express.static(__dirname + '/public'));
 // required for passport
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes ======================================================================
-require('./routes/root.js')(app,request,diskspace,Gpio);
+require('./routes/root.js')(app,request,diskspace,Gpio,fs);
 require('./routes/404.js')(app);
 // launch ======================================================================
 
