@@ -87,13 +87,14 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
-        
-            
+            var delay;    
+            delay = setTimeout(function(){flasher();}, 200);
             
            // var led = new Gpio(27, 'out');
+            flasher = function(){ 
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, 2000);
-
+            }
 
             
             res.render('acquireRefr.ejs');
