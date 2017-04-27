@@ -27,8 +27,8 @@
 // States current settings to be used
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
-var fNewName = [<%= fNameTransfer %>];
 
+var fNewName;
 
 function formatDate(date) {
     var d = new Date(date),
@@ -52,6 +52,7 @@ function formatDate(date) {
 
  $(document).ready ( function(){
 
+fileNewName =  [<%= fNameTransfer %>];
 
 document.getElementById("paramCheck").style.color = "#ffffff";
 document.getElementById("paramCheck").style.fontSize = "large";
