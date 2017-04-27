@@ -72,6 +72,10 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             process.chdir("/home/ion/ion");
 
 
+            fs.access('/home/ocean/'+ req.query.folderName, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+            console.log(err ? 'no access!' : 'can read/write');
+            });
+
             res.render('collectDark.ejs',{
                     fNameTransfer: fName
                 });
