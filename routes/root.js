@@ -99,9 +99,9 @@ module.exports = function(app, request,diskspace,Gpio) {
             console.log(req.query.aqNumber);
 
             // GET INTERVAL TIME
-            var readInt = 5000;
-            var intTime =   200;
-            var time = 50000;
+            var readInt = req.query.seqint;
+            var intTime =   req.query.intTime;
+            var aqNumber = req.query.aqNumber;
 
             
 
