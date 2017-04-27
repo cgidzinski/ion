@@ -30,7 +30,7 @@
 // var folderName = localStorage.setItem("folderName",[<%= folderName %>]);
 
 
-var folderName = [<%= folderName %>];
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -53,8 +53,8 @@ function formatDate(date) {
 }
 
  $(document).ready ( function(){
+var folderName = [<%= folderName %>];
 
-console.log("hi");
 
 document.getElementById("paramCheck").style.color = "#ffffff";
 document.getElementById("paramCheck").style.fontSize = "large";
