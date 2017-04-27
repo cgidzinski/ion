@@ -66,6 +66,15 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('collectRefr.ejs');
         });
         app.get('/collectDark', function(req, res) {
+
+                create();
+
+             function create()
+    {
+        var myObject, newfolder;
+        myObject = new ActiveXObject("Scripting.FileSystemObject");
+        newfolder = myObject.CreateFolder ("/home/ocean/test");
+    }
             res.render('collectDark.ejs');
         });
         app.get('/collectData', function(req, res) {

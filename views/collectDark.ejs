@@ -29,12 +29,7 @@
 //----------------------------------------------------------------------------------// 
 
 
- function create()
-    {
-        var myObject, newfolder;
-        myObject = new ActiveXObject("Scripting.FileSystemObject");
-        newfolder = myObject.CreateFolder ("/home/ocean/test");
-    }
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -57,7 +52,7 @@ function formatDate(date) {
 }
 
  $(document).ready ( function(){
-create();
+
 
 document.getElementById("paramCheck").style.color = "#ffffff";
 document.getElementById("paramCheck").style.fontSize = "large";
