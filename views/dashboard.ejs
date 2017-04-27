@@ -24,7 +24,7 @@
                                 </div>
 
                                 <div class="uk-width" style="width: 280px;" uk-vertical-align-middle>
-                                  <a href="/collectDark">
+                                  <a onclick="window.location.href='/collectDark?folderName=' + formatDate(Date())">
                                     <div class="uk-panel uk-panel-box">
                                       <div class="uk-panel-teaser">
                                          <img src="./images/DASH_START.png" alt="" width="280"></div>
@@ -107,6 +107,26 @@ ctx.fillText("MEMORY",27.5,22);
 ctx.font = "20px Arial";
 ctx.fillStyle = "BLACK";
 ctx.fillText(whole + '%',27.5,44);
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1);
+        day = '' + d.getDate();
+        year = d.getFullYear();
+        hour = d.getHours();
+        min = d.getMinutes();
+        sec = d.getSeconds();
+
+        
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (hour.length < 2) hour = '0' + hour;
+    if (min.length < 2) min = '0' + min;
+    if (sec.length < 2) sec = '0' + sec;
+
+    return [year, month, day].join('-') + 'T' + [hour, min, sec].join('-');
+}
 </script>
 
     </html>
