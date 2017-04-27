@@ -29,7 +29,10 @@
 //----------------------------------------------------------------------------------// 
 // var folderName = localStorage.setItem("folderName",[<%= folderName %>]);
 
-
+function getName(){
+        var folderName = [<%= folderName %>];
+        return folderName;
+}
 
 
 function formatDate(date) {
@@ -53,7 +56,7 @@ function formatDate(date) {
 }
 
  $(document).ready ( function(){
-var folderName = [<%= folderName %>];
+
 
 
 document.getElementById("paramCheck").style.color = "#ffffff";
