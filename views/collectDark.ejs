@@ -27,12 +27,12 @@
 // States current settings to be used
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
-var fNewName;
+var fNewName = [<%- fName %>];
 
-function getName(){
-        var name = [<%= fName %>];
-        return name;
-}
+// function getName(){
+//         var name = [<%= fName %>];
+//         return name;
+// }
 
 function formatDate(date) {
     var d = new Date(date),
