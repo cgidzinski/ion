@@ -30,6 +30,7 @@
 
 fName = $_GET('folderName');
 
+
 function $_GET(q,s) {
     s = (s) ? s : window.location.search;
     var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
@@ -59,6 +60,7 @@ function formatDate(date) {
 
 
  $(document).ready ( function(){
+localStorage.setItem('folderName',fName);
 
 
 document.getElementById("paramCheck").style.color = "#ffffff";
