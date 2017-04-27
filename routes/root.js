@@ -92,7 +92,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             
            // var led = new Gpio(27, 'out');
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, 5000);
+            setTimeout(function(){led.writeSync(0);}, 2000);
 
 
             
