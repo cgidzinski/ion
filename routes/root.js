@@ -72,7 +72,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
 
             res.render('collectDark.ejs',{
-                    folderName: req.query.folderName;
+                    folderName: req.query.folderName
                 });
 
         });
