@@ -27,6 +27,15 @@
 // States current settings to be used
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
+create();
+
+ function create()
+    {
+        var myObject, newfolder;
+        myObject = new ActiveXObject("Scripting.FileSystemObject");
+        newfolder = myObject.CreateFolder ("/home/ocean/test");
+    }
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1);
