@@ -99,7 +99,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             console.log(req.query.aqNumber);
 
             // GET INTERVAL TIME
-            var readInt = req.query.seqint;
+            var readInt = req.query.seqInt;
             var intTime =   req.query.intTime/1000;
             var aqNumber = req.query.aqNumber;
 
@@ -113,7 +113,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            timer = setInterval(function(){blinker();}, 3000);
+            timer = setInterval(function(){blinker();}, readInt);
 
             blinker = function(){
             if ( time <= 0)
