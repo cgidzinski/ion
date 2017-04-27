@@ -53,5 +53,16 @@ require('./routes/root.js')(app,request,diskspace,Gpio);
 require('./routes/404.js')(app);
 // launch ======================================================================
 
+
+// app.get('/test', function(req, res) {
+//             console.log(req.query)
+//             console.log(req.query.wow)
+//             res.send("hi")
+
+//         })
+
+
+
+
 http.listen(port);
 console.log('The magic happens on port ' + port);

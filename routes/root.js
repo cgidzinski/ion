@@ -3,7 +3,8 @@
 
 
 module.exports = function(app, request,diskspace,Gpio) {
-        
+                var led = new Gpio(27, 'out');
+                var timer;
         // =============================================================================
         // ROOT ========================================================================
         // =============================================================================
@@ -77,7 +78,7 @@ module.exports = function(app, request,diskspace,Gpio) {
         
             
             
-            var led = new Gpio(27, 'out');
+           // var led = new Gpio(27, 'out');
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, 5000);
 
@@ -93,8 +94,10 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('acquireDark.ejs');
         });
         app.get('/acquireData', function(req, res) {
+            console.log(req.query.intTime);
+            console.log(req.query.seqInt);
+            console.log(req.query.aqNumber);
 
-            
             // GET INTERVAL TIME
             var readInt = 5000;
             var intTime =   200;
@@ -103,8 +106,8 @@ module.exports = function(app, request,diskspace,Gpio) {
             
 
             // SET UP LED FOR BLINK
-            var timer;
-            var led = new Gpio(27, 'out');
+            // var timer;
+           // led = new Gpio(27, 'out');
 
             led.writeSync(1);   
             setTimeout(function(){led.writeSync(0);}, intTime); 
@@ -222,7 +225,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             res.render('setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
-            var timer 
+           // var timer 
             // var led = Gpio(27, 'out');
             // led.unexport();
             clearInterval(timer);
