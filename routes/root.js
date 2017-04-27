@@ -73,7 +73,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
 
             res.render('collectDark.ejs',{
-                    fName: fName
+                    fNameTransfer: fName
                 });
 
         });
