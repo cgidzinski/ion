@@ -115,7 +115,8 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var intTime =   req.query.intTime/1000;
             var aqNumber = req.query.aqNumber;
 
-            var time = aqNumber * (readInt);    
+            var time = aqNumber * (readInt);
+            var delay;    
             
 
             // SET UP LED FOR BLINK
@@ -125,7 +126,13 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            timer = setInterval(function(){blinker();}, readInt);
+            delay = setInterval(function(){pulser();}, 1000);
+
+            pulser = function(){
+            timer = setInterval(function(){blinker();}, readInt);    
+            }
+
+            
 
             blinker = function(){
             if ( time <= 0)
