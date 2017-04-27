@@ -55,7 +55,7 @@ function formatDate(date) {
     return [year, month, day].join('-') + 'T' + [hour, min, sec].join('-');
 }
 
-var fName =  $_GET('folderName');
+
 
  $(document).ready ( function(){
 
@@ -65,7 +65,7 @@ document.getElementById("paramCheck").style.fontSize = "large";
 
 document.getElementById("paramCheck").innerHTML = "<center><table><tr><td>Integration Time: </td><td>" + localStorage.getItem("intTime")+ "</td></tr><tr><td>Scan Average: </td><td>" + localStorage.getItem("scanAvg")+ "</td></tr><tr><td>Box Car: </td><td>" + localStorage.getItem("boxCar") +"</td></tr></table><hr></center>";
 
-document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ localStorage.getItem("intTime") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ localStorage.getItem("scanAvg") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ localStorage.getItem("boxCar") +"' height='0' width='0'></iframe    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ formatDate(Date()) + "DARK" + "' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean/" + fName + ' height='0' width='0'></iframe>";
+document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ localStorage.getItem("intTime") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ localStorage.getItem("scanAvg") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ localStorage.getItem("boxCar") +"' height='0' width='0'></iframe    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ formatDate(Date()) + "DARK" + "' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean/" + "" + ' height='0' width='0'></iframe>";
 
  })
 
