@@ -110,8 +110,8 @@ module.exports = function(app, request,diskspace,Gpio) {
             // var timer;
            // led = new Gpio(27, 'out');
 
-            led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, intTime); 
+            // led.writeSync(1);   
+            // setTimeout(function(){led.writeSync(0);}, intTime); 
 
             timer = setInterval(function(){blinker();}, readInt);
 
