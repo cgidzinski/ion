@@ -103,6 +103,7 @@ module.exports = function(app, request,diskspace,Gpio) {
             var intTime =   req.query.intTime;
             var aqNumber = req.query.aqNumber;
 
+            var time = aqNumber * (readInt/1000);    
             
 
             // SET UP LED FOR BLINK
