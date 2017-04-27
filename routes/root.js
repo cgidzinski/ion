@@ -67,12 +67,13 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         });
         app.get('/collectDark', function(req, res) {
             console.log(req.query.folderName);
+            var fName = req.query.folderName;
             fs.mkdir('/home/ocean/'+ req.query.folderName);
             process.chdir("/home/ion/ion");
 
 
             res.render('collectDark.ejs',{
-                    folderName: req.query.folderName
+                    fName: fName
                 });
 
         });
