@@ -126,7 +126,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            delay = setInterval(function(){pulser();}, 1000);
+            delay = setTimeout(function(){pulser();}, 1000);
 
             pulser = function(){
             timer = setInterval(function(){blinker();}, readInt);    
