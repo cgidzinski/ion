@@ -90,12 +90,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var intTime =   req.query.intTime/1000;
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 6100);
+            delay = setTimeout(function(){flasher();}, 5500);
             
            // var led = new Gpio(27, 'out');
             flasher = function(){ 
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, 1000);
+            setTimeout(function(){led.writeSync(0);}, intTime+500);
             }
 
             
@@ -132,7 +132,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             delay = setTimeout(function(){pulser();}, 3100);
 
             pulser = function(){
-            timer = setInterval(function(){blinker();}, readInt);    
+            timer = setInterval(function(){blinker();}, readInt-(intTime+500));    
             }
 
             
