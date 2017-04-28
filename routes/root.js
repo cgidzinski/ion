@@ -88,7 +88,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         });
         app.get('/acquireRefr', function(req, res) {
             var delay;    
-            delay = setTimeout(function(){flasher();}, 3000);
+            delay = setTimeout(function(){flasher();}, 6100);
             
            // var led = new Gpio(27, 'out');
             flasher = function(){ 
@@ -127,7 +127,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            delay = setTimeout(function(){pulser();}, 3000);
+            delay = setTimeout(function(){pulser();}, 6100);
 
             pulser = function(){
             timer = setInterval(function(){blinker();}, readInt);    
