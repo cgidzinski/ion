@@ -88,12 +88,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         });
         app.get('/acquireRefr', function(req, res) {
             var delay;    
-            delay = setTimeout(function(){flasher();}, 1000);
+            delay = setTimeout(function(){flasher();}, 200);
             
            // var led = new Gpio(27, 'out');
             flasher = function(){ 
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, 2000);
+            setTimeout(function(){led.writeSync(0);}, 1000);
             }
 
             
