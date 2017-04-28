@@ -97,7 +97,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             }
 
             
-            res.render('acquireRefr.ejs');
+            res.render('acquireRefr.ejs',{});
             
             
             
