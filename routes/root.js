@@ -87,7 +87,9 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
+            var intTime =   req.query.intTime/1000;
             var delay;    
+            
             delay = setTimeout(function(){flasher();}, 6100);
             
            // var led = new Gpio(27, 'out');
@@ -145,7 +147,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             {
                 time = time - readInt;
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, intTime); 
+                setTimeout(function(){led.writeSync(0);}, intTime+500); 
             }}
 
             res.render('acquireData.ejs', {});
