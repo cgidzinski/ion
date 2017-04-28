@@ -70,7 +70,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             
             fs.mkdir('/home/ocean/'+ req.query.folderName);
             fs.chmod('/home/ocean/'+ req.query.folderName, '777');
-            process.chdir("/home/ion/");
+            process.chdir("/home/ion/ion");
 
 
           
