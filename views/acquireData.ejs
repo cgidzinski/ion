@@ -11,25 +11,13 @@
 <h3><button class="uk-button uk-button-danger uk-button-large" onclick="window.location.href='/stop'">Stop</button></h3>
 
 
-
-
-
-
 </body>
 
-
-
-
-
 <script type="text/javascript">
-
-
 
 // DETERMINE TOTAL DATA COLLECTION TIME FOR COUNTDOWN DISPLAY
 var time = parseInt(localStorage.getItem("seqInt")) * parseInt(localStorage.getItem("aqNumber")) + 1000;
 var timer;
-
-
 
 $(document).ready ( function(){
  timer = setInterval(function(){ countdown(); }, 1000);
