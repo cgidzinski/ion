@@ -135,7 +135,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             delay = setTimeout(function(){pulser();}, 1500);
 
             pulser = function(){
-            timer = setInterval(function(){blinker();}, readInt - ((intTime*scans) + 1000);    
+            timer = setInterval(function(){blinker();}, readInt - ((intTime*scans) + 1000));    
             }
 
             
