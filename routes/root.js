@@ -113,6 +113,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             console.log(req.query.intTime);
             console.log(req.query.seqInt);
             console.log(req.query.aqNumber);
+            console.log(req.query.scanAvg);
 
             // GET INTERVAL TIME
             var readInt = req.query.seqInt;
