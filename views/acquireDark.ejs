@@ -25,7 +25,7 @@
 
 
 
-var time = 2000
+var time = localStorage.getItem("intTime")*localStorage.getItem("scanAvg")*7;
 var timer;
 
 $(document).ready ( function(){
