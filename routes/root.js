@@ -96,30 +96,15 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var intTime =   req.query.intTime/1000;
             var scans = req.query.scanAvg;
 
-            var time = 4000;
             var delay;    
             
+            delay = setTimeout(function(){flasher();}, 1500);
 
-            delay = setTimeout(function(){pulser();}, 1500);
-
-            pulser = function(){
-            timer = setInterval(function(){blinker();}, 4000-50);    
-            }
-
+            flasher = function(){
             
-
-            blinker = function(){
-            if ( time <= 0)
-            {
-                //stop timer
-                clearInterval(timer);
-            }
-            else
-            {
-                time = time - 4000;
                 led.writeSync(1);   
                 setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
-            }}
+            }
 
             
             res.render('acquireRefr.ejs',{});
