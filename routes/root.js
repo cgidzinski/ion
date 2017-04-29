@@ -76,7 +76,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
           
 
             res.render('collectDark.ejs',{
-                    
+                     
                 });
 
         });
@@ -96,14 +96,14 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var intTime =   req.query.intTime/1000;
             var scans = req.query.scanAvg;
 
-            var time = 1000;
+            var time = 3000;
             var delay;    
             
 
             delay = setTimeout(function(){pulser();}, 1500);
 
             pulser = function(){
-            timer = setInterval(function(){blinker();}, 1000-50);    
+            timer = setInterval(function(){blinker();}, 3000-50);    
             }
 
             
@@ -116,7 +116,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             }
             else
             {
-                time = time - 1000;
+                time = time - 3000;
                 led.writeSync(1);   
                 setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
             }}
