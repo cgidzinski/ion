@@ -8,7 +8,7 @@
 </head>
 <body>
     <iframe src='http://192.168.42.1/cgi-bin/startsequence.php'height="0" width="0"></iframe>
-<h1>Waiting for data...</h1>
+<h1 id="countdown-holder">Waiting for data...</h1>
 </body>
 
 
@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 
-var time = (localStorage.getItem("intTime")/1000)*localStorage.getItem("scanAvg")*7;
+var time = 5000;
 var timer;
 
 $(document).ready ( function(){

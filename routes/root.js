@@ -87,17 +87,39 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
-            var scans = req.query.scanAvg;
+            console.log(req.query.intTime);
+            console.log(req.query.seqInt);
+            console.log(req.query.aqNumber);
+            console.log(req.query.scanAvg);
+
+            // GET INTERVAL TIME
             var intTime =   req.query.intTime/1000;
+            var scans = req.query.scanAvg;
+
+            var time = 1000;
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 6700);
-            
-           // var led = new Gpio(27, 'out');
-            flasher = function(){ 
-            led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000);
+
+            delay = setTimeout(function(){pulser();}, 1500);
+
+            pulser = function(){
+            timer = setInterval(function(){blinker();}, 1000-50);    
             }
+
+            
+
+            blinker = function(){
+            if ( time <= 0)
+            {
+                //stop timer
+                clearInterval(timer);
+            }
+            else
+            {
+                time = time - readInt;
+                led.writeSync(1);   
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+            }}
 
             
             res.render('acquireRefr.ejs',{});
