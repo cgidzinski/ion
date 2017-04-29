@@ -116,7 +116,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             }
             else
             {
-                time = time - readInt;
+                time = time - 1000;
                 led.writeSync(1);   
                 setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
             }}
