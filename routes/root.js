@@ -87,15 +87,16 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             res.render('collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
+            var scans = req.query.scanAvg;
             var intTime =   req.query.intTime/1000;
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 6500);
+            delay = setTimeout(function(){flasher();}, 5700);
             
            // var led = new Gpio(27, 'out');
             flasher = function(){ 
             led.writeSync(1);   
-            setTimeout(function(){led.writeSync(0);}, intTime+500);
+            setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000);
             }
 
             
@@ -117,6 +118,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var readInt = req.query.seqInt;
             var intTime =   req.query.intTime/1000;
             var aqNumber = req.query.aqNumber;
+            var scans = req.query.scanAvg;
 
             var time = aqNumber * (readInt);
             var delay;    
@@ -129,10 +131,10 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             // led.writeSync(1);   
             // setTimeout(function(){led.writeSync(0);}, intTime); 
 
-            delay = setTimeout(function(){pulser();}, 3100);
+            delay = setTimeout(function(){pulser();}, 1500);
 
             pulser = function(){
-            timer = setInterval(function(){blinker();}, readInt-(intTime+500));    
+            timer = setInterval(function(){blinker();}, readInt);    
             }
 
             
@@ -147,7 +149,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             {
                 time = time - readInt;
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, intTime+500); 
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
             }}
 
             res.render('acquireData.ejs', {});
