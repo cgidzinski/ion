@@ -17,7 +17,7 @@
         <div id="frameBox"></div>
 
             
-            <h3><button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/acquireTest'">GET IT</button></h3>
+            <h3><button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/acquireTest?intTime='+localStorage.getItem('intTime')+'&scanAvg='+localStorage.getItem('scanAvg')+'&'">GET IT</button></h3>
 
     </div>
     </div>
@@ -30,6 +30,8 @@
 // States current settings to be used
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
+var waitTest = 2000;
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1);
@@ -57,8 +59,7 @@ document.getElementById("paramCheck").style.fontSize = "large";
 
 document.getElementById("paramCheck").innerHTML = "<center><table><tr><td>Integration Time: </td><td>" + localStorage.getItem("intTime")+ "</td></tr><tr><td>Scan Average: </td><td>" + localStorage.getItem("scanAvg")+ "</td></tr><tr><td>Box Car: </td><td>" + localStorage.getItem("boxCar") +"</td></tr></table><hr></center>";
 
-document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ localStorage.getItem("intTime") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ localStorage.getItem("scanAvg") +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ localStorage.getItem("boxCar") +"' height='0' width='0'></iframe    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ '1' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ formatDate(Date()) + 'TEST' +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean'height='0' width='0'></iframe>";
-
+document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=1' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ String(localStorage.getItem("intTime")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ String(localStorage.getItem("scanAvg")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ String(localStorage.getItem("boxCar")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ String(waitTest) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ String(formatDate(Date())) + String(localStorage.getItem("prefix")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean/"+ String(fName) + "' height='0' width='0'></iframe>";
  })
 
 // NOTE: May want to route saves of TEST files into a "junk" directory to not contaminate data directories

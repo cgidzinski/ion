@@ -98,7 +98,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 1500);
+            delay = setTimeout(function(){flasher();}, 2500);
 
             flasher = function(){
             
@@ -169,6 +169,26 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
         });
         app.get('/acquireTest', function(req, res) {
+            console.log(req.query.intTime);
+            console.log(req.query.seqInt);
+            console.log(req.query.aqNumber);
+            console.log(req.query.scanAvg);
+
+            // GET INTERVAL TIME
+            var intTime =   req.query.intTime/1000;
+            var scans = req.query.scanAvg;
+
+            var delay;    
+            
+            delay = setTimeout(function(){flasher();}, 2500);
+
+            flasher = function(){
+            
+                led.writeSync(1);   
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+            }
+
+            
             res.render('acquireTest.ejs');
         });
         app.get('/resultsDark', function(req, res) {

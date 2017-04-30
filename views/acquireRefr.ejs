@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 
-var time = 6000;
+var time = 2000+((localStorage.getItem("intTime")/1000)*localStorage.getItem("scanAvg"));
 var timer;
 
 $(document).ready ( function(){

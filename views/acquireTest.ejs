@@ -23,7 +23,7 @@
 // Pulse light source for this one to check if light gets through to spectrometer
 //----------------------------------------------------------------------------------// 
 
-var time = 2000
+var time = 2000+((localStorage.getItem("intTime")/1000)*localStorage.getItem("scanAvg"));
 var timer;
 
 $(document).ready ( function(){
