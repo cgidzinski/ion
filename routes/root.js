@@ -209,7 +209,11 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                     console.log('Files: ' + f);
                     var fileClean = f.replace(/["]/g, "");
                     console.log(fileClean);
-                
+                    var oldName = currentDir+f;
+                    var newName = currentDir+fileClean;
+                    console.log(oldName);
+                    console.log(newName);
+
                     fs.renameSync(currentDir+f, currentDir+fileClean);
                         
                 });
