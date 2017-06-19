@@ -137,13 +137,6 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var delay;    
             
 
-            // SET UP LED FOR BLINK
-            // var timer;
-           // led = new Gpio(27, 'out');
-
-            // led.writeSync(1);   
-            // setTimeout(function(){led.writeSync(0);}, intTime); 
-
             delay = setTimeout(function(){pulser();}, 1500);
 
             pulser = function(){
@@ -167,7 +160,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             res.render('acquireData.ejs', {});
 
-            led.unexport(); 
+            //led.unexport(); 
             
             
             
@@ -200,24 +193,24 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var wavelengthdata;
             var spectrumdata;
 
-            var currentDir = '/home/ocean/'+ req.query.folderName + '/';
-            console.log(currentDir);
+            // var currentDir = '/home/ocean/'+ req.query.folderName + '/';
+            // console.log(currentDir);
 
-            fs.readdir(currentDir, function(err, files) {
-                if (err) return;
-                    files.forEach(function(f) {
-                    console.log('Files: ' + f);
-                    var fileClean = f.replace(/["]/g, "");
-                    console.log(fileClean);
-                    var oldName = currentDir+f;
-                    var newName = currentDir+fileClean;
-                    console.log(oldName);
-                    console.log(newName);
+            // fs.readdir(currentDir, function(err, files) {
+            //     if (err) return;
+            //         files.forEach(function(f) {
+            //         console.log('Files: ' + f);
+            //         var fileClean = f.replace(/["]/g, "");
+            //         console.log(fileClean);
+            //         var oldName = currentDir+f;
+            //         var newName = currentDir+fileClean;
+            //         console.log(oldName);
+            //         console.log(newName);
 
-                    fs.renameSync(currentDir+f, currentDir+fileClean);
+            //         fs.renameSync(currentDir+f, currentDir+fileClean);
                         
-                });
-            });
+            //     });
+            // });
            
 
 
@@ -243,24 +236,24 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var wavelengthdata;
             var spectrumdata;
 
-            var currentDir = '/home/ocean/'+ req.query.folderName + '/';
-            console.log(currentDir);
+            // var currentDir = '/home/ocean/'+ req.query.folderName + '/';
+            // console.log(currentDir);
 
-            fs.readdir(currentDir, function(err, files) {
-                if (err) return;
-                    files.forEach(function(f) {
-                    console.log('Files: ' + f);
-                    var fileClean = f.replace(/["]/g, "");
-                    console.log(fileClean);
-                    var oldName = currentDir+f;
-                    var newName = currentDir+fileClean;
-                    console.log(oldName);
-                    console.log(newName);
+            // fs.readdir(currentDir, function(err, files) {
+            //     if (err) return;
+            //         files.forEach(function(f) {
+            //         console.log('Files: ' + f);
+            //         var fileClean = f.replace(/["]/g, "");
+            //         console.log(fileClean);
+            //         var oldName = currentDir+f;
+            //         var newName = currentDir+fileClean;
+            //         console.log(oldName);
+            //         console.log(newName);
 
-                    fs.renameSync(currentDir+f, currentDir+fileClean);
+            //         fs.renameSync(currentDir+f, currentDir+fileClean);
                         
-                });
-            });
+            //     });
+            // });
 
 
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
@@ -280,7 +273,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                 }
             });
         });
-        
+
         app.get('/resultsData', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
