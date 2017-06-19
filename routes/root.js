@@ -3,19 +3,24 @@
 
 
 module.exports = function(app, request,diskspace,Gpio,fs,pr) {
-                var led = new Gpio(27, 'out');
-                var timer;
+               var led = new Gpio(27, 'out');
+               var timer;
         // =============================================================================
         // ROOT ========================================================================
         // =============================================================================
         app.get('/', function(req, res) {
            
+
            diskspace.check('/', function (err, result)
             {
+
+            console.log(result.total);
+            console.log(result.free);
+
             res.render('dashboard.ejs',{
             mTotal: result.total,
-            mFree: result.free
-            })
+                mFree: result.free
+                })
 
 
         })
@@ -162,7 +167,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             res.render('acquireData.ejs', {});
 
-            // led.unexport(); 
+            led.unexport(); 
             
             
             
@@ -194,6 +199,26 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         app.get('/resultsDark', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
+
+            var currentDir = '/home/ion/'+ req.query.folderName;
+            console.log(currentDir);
+
+
+            fs.readdir(currentDir, (err, files) => {
+                files.forEach(file => {
+                console.log(file);
+                var fileClean = file.replace(/["]/g, "");
+                console.log(fileClean);
+                });
+            });
+
+
+
+
+            process.chdir('/home/ion/');            
+
+
+
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var wavelengthdata = body.split(" ");
