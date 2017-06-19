@@ -200,7 +200,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var wavelengthdata;
             var spectrumdata;
 
-            var currentDir = '/home/ion/'+ req.query.folderName;
+            var currentDir = '/home/ocean/'+ req.query.folderName;
             console.log(currentDir);
 
             fs.readdir(currentDir, function(err, files) {
