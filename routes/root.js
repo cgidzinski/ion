@@ -204,13 +204,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             console.log(currentDir);
 
 
-            fs.readdir(currentDir, (err, files) => {
-                files.forEach(file => {
+            fs.readdirSync(currentDir).forEach(file => {
                 console.log(file);
                 var fileClean = file.replace(/["]/g, "");
                 console.log(fileClean);
-                });
             });
+            
 
 
 
