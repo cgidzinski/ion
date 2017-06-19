@@ -203,18 +203,15 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             var currentDir = '/home/ion/'+ req.query.folderName;
             console.log(currentDir);
 
-
-            fs.readdirSync(currentDir).forEach(file => {
-                console.log(file);
-                var fileClean = file.replace(/["]/g, "");
+            fs.readdir(currentDir, function(err, files) {
+                if (err) return;
+                files.forEach(function(f) {
+                console.log('Files: ' + f);
+                var fileClean = f.replace(/["]/g, "");
                 console.log(fileClean);
+                });
             });
-            
-
-
-
-
-            process.chdir('/home/ion/');            
+           
 
 
 
