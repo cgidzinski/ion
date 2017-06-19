@@ -209,6 +209,9 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                 console.log('Files: ' + f);
                 var fileClean = f.replace(/["]/g, "");
                 console.log(fileClean);
+                fs.rename(currentDir+f,currentDir+fileClean, function(err){
+                    if (err) console.log('ERROR: Did not rename')
+                });
                 });
             });
            
