@@ -28,7 +28,7 @@ $(document).ready ( function(){
 countdown = function(){
 if ( time <= 0)
 {
-window.location.href = "/resultsRefr";
+window.location.href = '/resultsRefr?folderName=' + localStorage.getItem("folderName");
 clearInterval(timer);
 }
 else

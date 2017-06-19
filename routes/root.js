@@ -242,6 +242,27 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         app.get('/resultsRefr', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
+
+            var currentDir = '/home/ocean/'+ req.query.folderName + '/';
+            console.log(currentDir);
+
+            fs.readdir(currentDir, function(err, files) {
+                if (err) return;
+                    files.forEach(function(f) {
+                    console.log('Files: ' + f);
+                    var fileClean = f.replace(/["]/g, "");
+                    console.log(fileClean);
+                    var oldName = currentDir+f;
+                    var newName = currentDir+fileClean;
+                    console.log(oldName);
+                    console.log(newName);
+
+                    fs.renameSync(currentDir+f, currentDir+fileClean);
+                        
+                });
+            });
+
+
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var wavelengthdata = body.split(" ");
@@ -259,9 +280,32 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                 }
             });
         });
+        
         app.get('/resultsData', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
+            
+            var currentDir = '/home/ocean/'+ req.query.folderName + '/';
+            console.log(currentDir);
+
+            fs.readdir(currentDir, function(err, files) {
+                if (err) return;
+                    files.forEach(function(f) {
+                    console.log('Files: ' + f);
+                    var fileClean = f.replace(/["]/g, "");
+                    console.log(fileClean);
+                    var oldName = currentDir+f;
+                    var newName = currentDir+fileClean;
+                    console.log(oldName);
+                    console.log(newName);
+
+                    fs.renameSync(currentDir+f, currentDir+fileClean);
+                        
+                });
+            });    
+
+
+
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var wavelengthdata = body.split(" ");
