@@ -5,6 +5,7 @@
 module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                var led = new Gpio(27, 'out');
                var timer;
+               var readCount = 0;
         // =============================================================================
         // ROOT ========================================================================
         // =============================================================================
@@ -77,7 +78,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             fs.chmod('/home/ocean/'+ req.query.folderName, '777');
             process.chdir("/home/ion/");
 
-
+            readCount = 0;
           
 
             res.render('collectDark.ejs',{
@@ -287,12 +288,30 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                     console.log('Files: ' + f);
                     var fileClean = f.replace(/["]/g, "");
                     console.log(fileClean);
+
                     var oldName = currentDir+f;
-                    var newName = currentDir+fileClean;
+                    var newName;
+
+                    if (fileClean.indexOf("DARK") != -1) {
+     
+                    newName = currentDir+fileClean;
+
+                    } else if (fileClean.indexOf("REFR") != -1) {
+
+                    newName = currentDir+fileClean;    
+
+                    } else {
+
+                        newName =  currentDir+"COUNT_" + readCount + "_" + fileClean;
+                        readCount ++ 1;
+                    }
+
+                   
                     console.log(oldName);
                     console.log(newName);
 
-                    fs.renameSync(currentDir+f, currentDir+fileClean);
+                    fs.renameSync(oldName, newName);
+                    
                         
                 });
             });    
