@@ -303,7 +303,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                     } else {
 
                         newName =  currentDir+"COUNT_" + readCount + "_" + fileClean;
-                        readCount ++ 1;
+                        readCount = readCount + 1;
                     }
 
                    
