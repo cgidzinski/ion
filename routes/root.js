@@ -300,11 +300,16 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
                     newName = currentDir+fileClean;    
 
+                    } else if (fileClean.indexOf("COUNT") != -1) {
+
+                    newName = currentDir+fileClean;    
+
                     } else {
 
-                        if (readCount.length < 2){ readCount = '0' + readCount;}
-                        
-                        newName =  currentDir+"COUNT_" + readCount + "_" + fileClean;
+                        var numPad = String (readCount);
+                        if (numPad.length < 2){ numPad = '0' + numPad;}
+
+                        newName =  currentDir+"COUNT_" + numPad + "_" + fileClean;
                         readCount = readCount + 1;
                     }
 
