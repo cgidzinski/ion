@@ -14,15 +14,15 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-
+            <div>
              <form name="idForm"  method="post">
-                SAMPLE ID: <input type="CAL" name="fname">
-                <input type="submit" value="Submit">
+                SAMPLE ID: <input id="ID" type="text"/>
+                <input type="submit" value="Submit"  onclick="setId()">
             </form> 
+            </div>
 
 
-
-            <input id="CAL" type="text"/>
+        
 
             <h3>
             <button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/setup_change'">Change Values</button>
@@ -36,8 +36,13 @@
 
 <script type="text/javascript">
 
+
+function setId(){
+     localStorage.setItem("ID",document.getElementById("ID").value) 
+ }
+
   
-fileNote = "_S" + document.getelementById ("CAL") + "_" ; 
+fileNote = "_S" + document.getelementById ("ID") + "_" ; 
 fName = localStorage.getItem("folderName");
 
 function formatDate(date) {
