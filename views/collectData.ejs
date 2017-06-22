@@ -14,12 +14,12 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-            <form id="ID" >
-            Sample ID: <input type="text"  value="TEST"><br>
-            <input type="submit" value="Submit" onclick="setId()">
+            <form id="idForm">
+            Sample ID: <input type="text"  name="ID" value="TEST"><br>
+            <input type="submit" value="Submit">
             </form> 
 
-            
+            <button onclick="setId()"> CHECK </button>
 
 
         
@@ -38,7 +38,9 @@
 
 
 function setId(){
-     console.log(document.getElementById("ID");
+     idValue = document.getElementById("idForm");
+     name = idValue.elements[0].value;
+     console.log(name);
  }
 
 
