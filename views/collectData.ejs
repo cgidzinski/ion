@@ -14,13 +14,12 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-            <form id="frm1" >
-                First name: <input type="text" name="fname"><br>
-                Last name: <input type="text" name="lname"><br><br>
-                <input type="button" onclick="myFunction()" value="Submit">
+            <form id="idForm" >
+                SAMPLE ID: <input type="text" name="lname"><br><br>
+                <input type="button" onclick="myFunction()" value="SET">
             </form>
 
-            <p id="demo"></p>
+            
 
 
         
@@ -39,18 +38,18 @@
 
 
 function myFunction(){
-    var x = document.getElementById("frm1");
+    var x = document.getElementById("idForm");
     var text = "";
     var i;
     for (i = 0; i < x.length ;i++) {
-        text += x.elements[i].value + "<br>";
+        text += x.elements[i].value;
     }
-    document.getElementById("demo").innerHTML = text;
+    console.log(text);
  }
 
 
   
-fileNote = "_S" + document.getelementById("ID") + "_" ; 
+fileNote = "_S" + document.getElementById("idForm") + "_" ; 
 fName = localStorage.getItem("folderName");
 
 function formatDate(date) {
