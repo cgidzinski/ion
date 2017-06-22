@@ -15,12 +15,13 @@
         <div id="frameBox"></div>
 
             <form id="idForm"  align="center">
+                
                 SAMPLE ID: <input type="text" name="id"><br><br>
                 <input type="button" onclick="myFunction()" value="SET">
             </form>
 
             
-
+            <p id="demo"> </p>
 
         
 
@@ -44,6 +45,7 @@ function myFunction(){
     for (i = 0; i < x.length ;i++) {
         text += x.elements[i].value;
     }
+    document.getElementById("demo").innerHTML = text;
     console.log(text);
  }
 
