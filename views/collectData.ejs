@@ -14,12 +14,12 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-            <div>
-             <table name="idForm" align="center">
-                SAMPLE ID: <input id="ID" type="text"/>
-                <input type="submit" value="Submit"  onclick="setId()">
-            </table> 
-            </div>
+            <form id="frm1" >
+            Sample ID: <input type="text" name="ID" value="TEST"><br>
+            <input type="submit" value="Submit" onclick="setId()">
+            </form> 
+
+            
 
 
         
@@ -38,12 +38,12 @@
 
 
 function setId(){
-     localStorage.setItem("ID",document.getElementById("ID").value) 
+     console.log(document.getElementById("ID");
  }
-console.log(localStorage.getItem("folderName"));
+
 
   
-fileNote = "_S" + document.getelementById ("ID") + "_" ; 
+fileNote = "_S" + document.getelementById("ID") + "_" ; 
 fName = localStorage.getItem("folderName");
 
 function formatDate(date) {
