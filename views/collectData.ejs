@@ -55,8 +55,7 @@ noteValue = localStorage.getItem("idNote");
 fileNote = "_S" + noteValue + "_" ; 
 fName = localStorage.getItem("folderName");
 
-console.log(fName);
-console.log(fileNote);
+
 
 function formatDate(date) {
     var d = new Date(date),
@@ -81,6 +80,8 @@ function formatDate(date) {
 
  $(document).ready ( function(){
     
+console.log(fName);
+console.log(fileNote);
 
 document.getElementById("paramCheck").style.color = "#ffffff";
 document.getElementById("paramCheck").style.fontSize = "large";
