@@ -15,7 +15,7 @@
         <div id="frameBox"></div>
 
             <form id="idForm"  align="center">
-                SAMPLE ID: <input type="text" name="lname"><br><br>
+                SAMPLE ID: <input type="text" name="id"><br><br>
                 <input type="button" onclick="myFunction()" value="SET">
             </form>
 
@@ -50,7 +50,7 @@ function myFunction(){
 
 noteValue = document.getElementById("idForm");
 
-fileNote = "_S" + noteValue.elements[0].value + "_" ; 
+fileNote = "_S" + String(noteValue.elements[0].value) + "_" ; 
 fName = localStorage.getItem("folderName");
 
 function formatDate(date) {
