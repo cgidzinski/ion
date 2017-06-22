@@ -14,13 +14,17 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-            <form id="idForm"  align="center">
-                SAMPLE ID1: <input type="text" name="id1"><br>
-                SAMPLE ID2: <input type="text" name="id2"><br><br>
-                <input type="submit" value="Submit">
-            </form>
+            
 
-            <input type="button" onclick="myFunction()" value="check">
+            <table align ="center">
+
+            <tr>
+            <td>SAMPLE ID</td><td><input id="idNote" type="text"/></td> 
+            </tr>    
+
+            </table>
+
+            <button class = "uk-button uk-button-danger uk-button-large" onclick="idSet()">SET</button>
             
             <p id="demo"> </p>
 
@@ -39,22 +43,16 @@
 <script type="text/javascript">
 
 
-function myFunction(){
-    var x = document.getElementById("idForm");
-    var text = "";
-    var i;
-    for (i = 0; i < x.length ;i++) {
-        text += x.elements[i].value;
-        console.log(x.elements[i].value);
-    }
-    document.getElementById("demo").innerHTML = text;
-    console.log(text);
+function idSet(){
+    alert("ID SET");
+    localStorage.setItem("idNote",document.getElementById("idNote").value);
+
  }
 
 
-noteValue = document.getElementById("idForm");
+noteValue = localStorage.getItem("idNote");
 
-fileNote = "_S" + String(noteValue.elements[0].value) + "_" ; 
+fileNote = "_S" + noteValue + "_" ; 
 fName = localStorage.getItem("folderName");
 
 console.log(fName);
