@@ -14,7 +14,7 @@
         <div id="paramCheck"></div>
         <div id="frameBox"></div>
 
-            <form id="idForm" >
+            <form id="idForm"  align="center">
                 SAMPLE ID: <input type="text" name="lname"><br><br>
                 <input type="button" onclick="myFunction()" value="SET">
             </form>
@@ -48,8 +48,9 @@ function myFunction(){
  }
 
 
-  
-fileNote = "_S" + document.getElementById("idForm") + "_" ; 
+noteValue = document.getElementById("idForm");
+
+fileNote = "_S" + noteValue.elements[0].value + "_" ; 
 fName = localStorage.getItem("folderName");
 
 function formatDate(date) {
