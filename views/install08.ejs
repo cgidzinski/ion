@@ -1,42 +1,69 @@
+
+
 <!doctype html>
+
 
 <head>
     <title>Ion Beta | Dashboard</title>
     <%= include /partials/header.ejs %>
 </head>
-<strongody>
+<body>
 
+<div class="uk-grid">
+    <div class="uk-width-medium-8-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>STEP 12: Now its time to test the sensor</h1></strong>
+        <div id="paramCheck"></div>
+        <div id="frameBox"></div>
 
-<!-- <div class="uk-thumbnail uk-thumbnail-expand" width = "100%">
-    <img src="http://placekitten.com/200/300" alt="">
-    <div class="uk-thumbnail-caption">Picture Of Packaged</div>
-    <img src="http://placekitten.com/400/300" alt="">
-    <div class="uk-thumbnail-caption">Picture Of Packaged</div>
-</div>
- -->
+            
+            <h3><button class="uk-button uk-button-danger uk-button-large"  onclick="window.location.href='/acquireTest?intTime='+localStorage.getItem('intTime')+'&scanAvg='+localStorage.getItem('scanAvg')+'&'">GET IT</button></h3>
 
- <div class="uk-grid">
-    <div class="uk-width" style="width: 390px; height: 300px"><img class="uk-thumbnail" src="./images/F8_CAPREM2.png" alt="">
-    </div>
-    <div class="uk-width" style="width: 390px; height:390px;">
-	<div class="uk-panel uk-panel-box" style="height: 100%;">                             
-        <strong><h1>Step 8</h1></strong>
-        <p>Remove metal caps from optical connections on the ion system (NOTE: Blue = Light Out, Red = Light In) and the black caps from the remaining ends of optical fibre #1 and #2. </p>
-        
-        <a href="/install07">
-        <br><Button class="uk-button uk-button-danger uk-button-large" type="button" style="position: absolute; bottom: 5px; left: 5px;" >Prev</button>
-        </a>
-
-        <a href="/install09">
-        <br><Button class="uk-button uk-button-danger uk-button-large" type="button" style="position: absolute; bottom: 5px; right: 5px;">Next</button>
-        </a>
-        
     </div>
     </div>
 </div>
-</a>
-
-    
 </body>
+<script type="text/javascript">
+//----------------------------------------------------------------------------------// 
+// COLLECT DARK SPECTRUM SEQUENCE 
+// Sets up Dark Spec Acquisition
+// States current settings to be used
+// No pulse for light source, measures background buzz of spectrometer
+//----------------------------------------------------------------------------------// 
+var waitTest = 2000;
 
-    </html>
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1);
+        day = '' + d.getDate();
+        year = d.getFullYear();
+        hour = d.getHours();
+        min = d.getMinutes();
+        sec = d.getSeconds();
+
+        
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (hour.length < 2) hour = '0' + hour;
+    if (min.length < 2) min = '0' + min;
+    if (sec.length < 2) sec = '0' + sec;
+
+    return [year, month, day].join('-') + 'T' + [hour, min, sec].join('-');
+}
+
+document.getElementById("paramCheck").style.color = "#ffffff";
+document.getElementById("paramCheck").style.fontSize = "large";
+
+ $(document).ready ( function(){
+
+document.getElementById("paramCheck").innerHTML = "<center><table><tr><td>Integration Time: </td><td>" + localStorage.getItem("intTime")+ "</td></tr><tr><td>Scan Average: </td><td>" + localStorage.getItem("scanAvg")+ "</td></tr><tr><td>Box Car: </td><td>" + localStorage.getItem("boxCar") +"</td></tr></table><hr></center>";
+
+document.getElementById("frameBox").innerHTML ="<iframe src='http://192.168.42.1/cgi-bin/setmaxacquisitions.php?acquisitions=1' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setintegration.php?time="+ String(localStorage.getItem("intTime")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setaverage.php?scans="+ String(localStorage.getItem("scanAvg")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setboxcar.php?width="+ String(localStorage.getItem("boxCar")) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsequenceinterval.php?interval="+ String(waitTest) +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setprefix.php?prefix="+ String(formatDate(Date())) + "TEST" +"' height='0' width='0'></iframe>    <iframe src='http://192.168.42.1/cgi-bin/setsavelocation.php?location=/home/ocean/test' height='0' width='0'></iframe>";
+ })
+
+// NOTE: May want to route saves of TEST files into a "junk" directory to not contaminate data directories
+
+</script>
+
+</html>
