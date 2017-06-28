@@ -110,12 +110,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 1500);
+            delay = setTimeout(function(){flasher();}, 2500);
 
             flasher = function(){
             
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+2000); 
             }
 
             
@@ -185,12 +185,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 1500);
+            delay = setTimeout(function(){flasher();}, 2500);
 
             flasher = function(){
             
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+2000); 
             }
 
             
@@ -208,12 +208,12 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 1500);
+            delay = setTimeout(function(){flasher();}, 2500);
 
             flasher = function(){
             
                 led.writeSync(1);   
-                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+2000); 
             }
 
             
