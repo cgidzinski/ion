@@ -68,6 +68,11 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         app.get('/installFin', function(req, res) {
             res.render('installFin.ejs');
         });
+        
+        app.get('/fibreTest', function(req, res) {
+            res.render('fibreTest.ejs');
+        });
+
         app.get('/collectRefr', function(req, res) {
             res.render('collectRefr.ejs');
         });
@@ -190,6 +195,30 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             
             res.render('acquireTest.ejs');
         });
+        app.get('/acquireFire', function(req, res) {
+            console.log(req.query.intTime);
+            console.log(req.query.seqInt);
+            console.log(req.query.aqNumber);
+            console.log(req.query.scanAvg);
+
+            // GET INTERVAL TIME
+            var intTime =   req.query.intTime/1000;
+            var scans = req.query.scanAvg;
+
+            var delay;    
+            
+            delay = setTimeout(function(){flasher();}, 2500);
+
+            flasher = function(){
+            
+                led.writeSync(1);   
+                setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
+            }
+
+            
+            res.render('acquireFire.ejs');
+        });    
+
         app.get('/resultsDark', function(req, res) {
             var wavelengthdata;
             var spectrumdata;
@@ -355,6 +384,26 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
                             res.render('resultsTest.ejs', {
+                                wavelength: wavelengthdata,
+                                spectrum: spectrumdata
+                            });
+                        }
+                    });
+                }
+            });
+        });
+        app.get('/resultsFire', function(req, res) {
+            var wavelengthdata;
+            var spectrumdata;
+            request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var wavelengthdata = body.split(" ");
+                    //gettectemperature
+                    request('http://192.168.42.1/cgi-bin/currentspectrum.php', { timeout: 1500 }, function(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            var spectrumdata = body.split(" ");
+                            console.log("ALL SET");
+                            res.render('resultsFire.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });

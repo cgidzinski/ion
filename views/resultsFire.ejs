@@ -1,0 +1,114 @@
+
+<!doctype html>
+
+<head>
+    <title>Ion Beta | Dashboard</title>
+    <%= include /partials/header.ejs %>
+</head>
+<body>
+<div class="uk-grid">
+    <div class="uk-width-medium-5-10">
+    <canvas id="myChart"  height="300"></canvas>
+    </div>
+    <div class="uk-width-medium-5-10">
+    <div class="uk-panel uk-panel-box">                             
+        <strong><h1>REVIEW YOUR SIGNAL...</h1></strong>
+        <h1>If the signal is weak: increase integration time </h1>
+        <h1>If the signal is saturated: decrease integration time </h1>
+        <h1>If there is no signal: check connections, check acquisition parameters</h1>
+        <a class="uk-button uk-button-danger uk-button-large" href="/setup_change">ADJUST</a>
+        <a class="uk-button uk-button-danger uk-button-large" href="/">ACCEPT</a>
+    </div>
+    </div>
+</div>
+<br>
+
+</body>
+
+    </html>
+
+
+
+
+
+                      
+<script>
+//------------------------------------------------// 
+// DISPLAY OF DARK SPECTRUM  
+// Plot of the dark spectrum just recorded as a spot-check
+// Accept it if it looks good
+// Move on to Reference Spectrum Collect
+//------------------------------------------------//
+
+
+var spec = [<%= spectrum %>];
+var wave = [<%= wavelength %>];
+var myDATA = [];
+  for (var i = 0; i < wave.length; i += 20) {
+    myDATA.push({"x": wave[i],"y": spec[i]});
+  }
+var ctx = document.getElementById("myChart");
+var scatterChart = new Chart(ctx, {
+    type: 'scatter',
+    
+    data: {
+        datasets: [{
+            borderColor: '#ff9900',
+            backgroundColor: '#ffb84d',
+            pointRadius: 1,
+            data: myDATA
+        }]
+    },
+    options: {
+        
+        legend: {
+            display: false
+        },
+
+        title: {
+            display: true,
+            fontColor: 'yellow',
+            fontSize: 20, 
+            text: 'TEST SPECTRUM'
+        },
+        
+        scales: {
+
+            yAxes: [{
+                ticks:{
+                    fontColor: '#ffff99',
+                    max: 20000,
+                    beginAtZero: true
+                },
+                gridLines:{
+                    color:'#ffff99',
+                    drawBorder: true
+                },
+                scaleLabel: {
+                display: true,
+                labelString: 'INTENSITY (counts)',
+                fontColor:'#ffff99',
+                padding: '10'
+                }
+            }],
+            xAxes: [{
+                ticks:{
+                    fontColor: '#ffff99',
+                    max: 900,
+                    min: 300,
+                    stepSize: 100
+                },
+                gridLines:{
+                    color:'#ffff99',
+                    drawBorder: true
+                },
+                scaleLabel: {
+                display: true,
+                fontColor:'#ffff99',
+                labelString: 'WAVELENGTH (nm)'
+                }
+            }]
+        }
+    }
+});
+</script>
