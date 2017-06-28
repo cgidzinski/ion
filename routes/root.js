@@ -68,26 +68,27 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         app.get('/installFin', function(req, res) {
             res.render('installFin.ejs');
         });
-        
         app.get('/fibreTest', function(req, res) {
             res.render('fibreTest.ejs');
         });
-
         app.get('/collectRefr', function(req, res) {
             res.render('collectRefr.ejs');
         });
         app.get('/collectDark', function(req, res) {
             console.log(req.query.folderName);
             
+
+            // CREATE A NEW DIRECTORY FOR THE NEXT ACQUISITION SEQUENCE
             fs.mkdir('/home/ocean/'+ req.query.folderName);
             fs.chmod('/home/ocean/'+ req.query.folderName, '777');
             process.chdir("/home/ion/");
 
+
+            // RESTART SPECTRA NUMBERING FOR THE NEW COLLECTION SERIES
             readCount = 0;
           
 
             res.render('collectDark.ejs',{
-                     
                 });
 
         });
@@ -109,7 +110,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 2500);
+            delay = setTimeout(function(){flasher();}, 1500);
 
             flasher = function(){
             
@@ -184,7 +185,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 2500);
+            delay = setTimeout(function(){flasher();}, 1500);
 
             flasher = function(){
             
@@ -207,7 +208,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
             var delay;    
             
-            delay = setTimeout(function(){flasher();}, 2500);
+            delay = setTimeout(function(){flasher();}, 1500);
 
             flasher = function(){
             
@@ -221,28 +222,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
 
         app.get('/resultsDark', function(req, res) {
             var wavelengthdata;
-            var spectrumdata;
-
-            // var currentDir = '/home/ocean/'+ req.query.folderName + '/';
-            // console.log(currentDir);
-
-            // fs.readdir(currentDir, function(err, files) {
-            //     if (err) return;
-            //         files.forEach(function(f) {
-            //         console.log('Files: ' + f);
-            //         var fileClean = f.replace(/["]/g, "");
-            //         console.log(fileClean);
-            //         var oldName = currentDir+f;
-            //         var newName = currentDir+fileClean;
-            //         console.log(oldName);
-            //         console.log(newName);
-
-            //         fs.renameSync(currentDir+f, currentDir+fileClean);
-                        
-            //     });
-            // });
-           
-
+            var spectrumdata; 
 
 
             request('http://192.168.42.1/cgi-bin/getwavelengths.php', { timeout: 1500 }, function(error, response, body) {
