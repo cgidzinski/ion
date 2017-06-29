@@ -18,7 +18,7 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
             console.log(result.total);
             console.log(result.free);
 
-            res.render('/home/ion/ion/dashboard.ejs',{
+            res.render('dashboard.ejs',{
             mTotal: result.total,
                 mFree: result.free
                 })
