@@ -30,49 +30,49 @@ module.exports = function(app, request,Gpio,fs,pr) {
             res.render('/home/ion/views/welcome.ejs');
         });
         app.get('/install01', function(req, res) {
-            res.render('install01.ejs');
+            res.render('/home/ion/views/install01.ejs');
         });
         app.get('/install02', function(req, res) {
-            res.render('install02.ejs');
+            res.render('/home/ion/views/install02.ejs');
         });
         app.get('/install03', function(req, res) {
-            res.render('install03.ejs');
+            res.render('/home/ion/views/install03.ejs');
         });
         app.get('/install04', function(req, res) {
-            res.render('install04.ejs');
+            res.render('/home/ion/views/install04.ejs');
         });
         app.get('/install05', function(req, res) {
-            res.render('install05.ejs');
+            res.render('/home/ion/views/install05.ejs');
         });
         app.get('/install06', function(req, res) {
-            res.render('install06.ejs');
+            res.render('/home/ion/views/install06.ejs');
         });
         app.get('/install07', function(req, res) {
-            res.render('install07.ejs');
+            res.render('/home/ion/views/install07.ejs');
         });
         app.get('/install08', function(req, res) {
-            res.render('install08.ejs');
+            res.render('/home/ion/views/install08.ejs');
         });
         app.get('/install09', function(req, res) {
-            res.render('install09.ejs');
+            res.render('/home/ion/views/install09.ejs');
         });
         app.get('/install10', function(req, res) {
-            res.render('install10.ejs');
+            res.render('/home/ion/views/install10.ejs');
         });
         app.get('/install11', function(req, res) {
-            res.render('install11.ejs');
+            res.render('/home/ion/views/install11.ejs');
         });
         app.get('/install12', function(req, res) {
-            res.render('install12.ejs');
+            res.render('/home/ion/views/install12.ejs');
         });
         app.get('/installFin', function(req, res) {
-            res.render('installFin.ejs');
+            res.render('/home/ion/views/installFin.ejs');
         });
         app.get('/fibreTest', function(req, res) {
-            res.render('fibreTest.ejs');
+            res.render('/home/ion/views/fibreTest.ejs');
         });
         app.get('/collectRefr', function(req, res) {
-            res.render('collectRefr.ejs');
+            res.render('/home/ion/views/collectRefr.ejs');
         });
         app.get('/collectDark', function(req, res) {
             console.log(req.query.folderName);
@@ -88,15 +88,15 @@ module.exports = function(app, request,Gpio,fs,pr) {
             readCount = 0;
           
 
-            res.render('collectDark.ejs',{
+            res.render('/home/ion/views/collectDark.ejs',{
                 });
 
         });
         app.get('/collectData', function(req, res) {
-            res.render('collectData.ejs');
+            res.render('/home/ion/views/collectData.ejs');
         });
         app.get('/collectTest', function(req, res) {
-            res.render('collectTest.ejs');
+            res.render('/home/ion/views/collectTest.ejs');
         });
         app.get('/acquireRefr', function(req, res) {
             console.log(req.query.intTime);
@@ -119,14 +119,14 @@ module.exports = function(app, request,Gpio,fs,pr) {
             }
 
             
-            res.render('acquireRefr.ejs',{});
+            res.render('/home/ion/views/acquireRefr.ejs',{});
             
             
             
         });
         
         app.get('/acquireDark', function(req, res) {
-            res.render('acquireDark.ejs');
+            res.render('/home/ion/views/acquireDark.ejs');
         });
         app.get('/acquireData', function(req, res) {
             console.log(req.query.intTime);
@@ -165,7 +165,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                 setTimeout(function(){led.writeSync(0);}, (intTime*scans)+1000); 
             }}
 
-            res.render('acquireData.ejs', {});
+            res.render('/home/ion/views/acquireData.ejs', {});
 
             //led.unexport(); 
             
@@ -194,7 +194,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
             }
 
             
-            res.render('acquireTest.ejs');
+            res.render('/home/ion/views/acquireTest.ejs');
         });
         app.get('/acquireFire', function(req, res) {
             console.log(req.query.intTime);
@@ -217,7 +217,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
             }
 
             
-            res.render('acquireFire.ejs');
+            res.render('/home/ion/views/acquireFire.ejs');
         });    
 
         app.get('/resultsDark', function(req, res) {
@@ -233,7 +233,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('resultsDark.ejs', {
+                            res.render('/home/ion/views/resultsDark.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
@@ -274,7 +274,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('resultsRefr.ejs', {
+                            res.render('/home/ion/views/resultsRefr.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
@@ -343,7 +343,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('resultsData.ejs', {
+                            res.render('/home/ion/views/resultsData.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
@@ -363,7 +363,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('resultsTest.ejs', {
+                            res.render('/home/ion/views/resultsTest.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
@@ -383,7 +383,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
                         if (!error && response.statusCode == 200) {
                             var spectrumdata = body.split(" ");
                             console.log("ALL SET");
-                            res.render('resultsFire.ejs', {
+                            res.render('/home/ion/views/resultsFire.ejs', {
                                 wavelength: wavelengthdata,
                                 spectrum: spectrumdata
                             });
@@ -393,10 +393,10 @@ module.exports = function(app, request,Gpio,fs,pr) {
             });
         });
         app.get('/help', function(req, res) {
-            res.render('help.ejs');
+            res.render('/home/ion/views/help.ejs');
         });
         app.get('/setup_change', function(req, res) {
-            res.render('setup_change.ejs');
+            res.render('/home/ion/views/setup_change.ejs');
         });
          app.get('/stop', function(req, res) {
            // var timer 
@@ -404,10 +404,10 @@ module.exports = function(app, request,Gpio,fs,pr) {
             // led.unexport();
             clearInterval(timer);
 
-            res.render('stop.ejs');
+            res.render('/home/ion/views/stop.ejs');
         });
         app.get('/shutdown', function(req, res) {
-            res.render('shutdown.ejs');
+            res.render('/home/ion/views/shutdown.ejs');
         });
 
 
