@@ -2,7 +2,7 @@
 
 
 
-module.exports = function(app, request,diskspace,Gpio,fs,pr) {
+module.exports = function(app, request,Gpio,fs,pr) {
                var led = new Gpio(27, 'out');
                var timer;
                var readCount = 0;
@@ -12,19 +12,19 @@ module.exports = function(app, request,diskspace,Gpio,fs,pr) {
         app.get('/', function(req, res) {
            
 
-           diskspace.check('/', function (err, result)
-            {
+           // diskspace.check('/', function (err, result)
+           //  {
 
-            console.log(result.total);
-            console.log(result.free);
+            //console.log(result.total);
+            //console.log(result.free);
 
                 res.render('/home/ion/views/dashboard.ejs',{
-                mTotal: result.total,
-                mFree: result.free
-                })
+                //mTotal: result.total,
+                //mFree: result.free
+                });
 
 
-            })
+            // })
         });
         app.get('/welcome', function(req, res) {
             res.render('/home/ion/views/welcome.ejs');
