@@ -2,7 +2,7 @@
 
 
 
-module.exports = function(app, request,Gpio,fs,pr) {
+module.exports = function(app, request,diskspace,Gpio,fs,pr) {
                var led = new Gpio(27, 'out');
                var timer;
                var readCount = 0;
@@ -27,7 +27,7 @@ module.exports = function(app, request,Gpio,fs,pr) {
         // })
         });
         app.get('/welcome', function(req, res) {
-            res.render('welcome.ejs');
+            res.render('/home/ion/views/welcome.ejs');
         });
         app.get('/install01', function(req, res) {
             res.render('install01.ejs');
