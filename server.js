@@ -51,8 +51,8 @@ app.use(express.static(__dirname + '/public'));
 // required for passport
 app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes ======================================================================
-require('./home/ion/routes/root.js')(app,request,Gpio,fs,pr);
-require('./home/ion/routes/404.js')(app);
+require('./routes/root.js')(app,request,Gpio,fs,pr);
+require('./routes/404.js')(app);
 // launch ======================================================================
 
 
