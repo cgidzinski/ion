@@ -21,11 +21,8 @@ module.exports = function(app, request,Gpio,fs,pr) {
 
         app.get('/dashboard', function(req, res) {
             res.render('/home/ion/views/dashboard.ejs');
-
-
-        app.get('/welcome', function(req, res) {
-            res.render('/home/ion/views/welcome.ejs');
         });
+
         app.get('/install01', function(req, res) {
             res.render('/home/ion/views/install01.ejs');
         });
