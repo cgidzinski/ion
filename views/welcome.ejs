@@ -38,7 +38,7 @@
 // No pulse for light source, measures background buzz of spectrometer
 //----------------------------------------------------------------------------------// 
 
-var time = 10000;
+var time = 4000;
 var timer;
 
 $(document).ready ( function(){
@@ -48,7 +48,7 @@ $(document).ready ( function(){
 countdown = function(){
 if ( time <= 0)
 {
-window.location.href = "/";
+window.location.href = "/dashboard";
 clearInterval(timer);
 }
 else

@@ -18,7 +18,7 @@ var favicon = require('serve-favicon');
 
 var fs = require('fs');
 var pr = require('process');
-//var diskspace = require('diskspace');
+
 
 var Gpio = require('onoff').Gpio;
 

@@ -75,38 +75,39 @@
 </body>
 
 <script>
-var total = 200000000/30000000;
-var free = 100000000/30000000;
-var used = total - free;
-var percent = (used/total)*100;
-var whole = percent.toPrecision(2);
+// removed memory bar feature due to buggy issues
+// var total = 200000000/30000000;
+// var free = 100000000/30000000;
+// var used = total - free;
+// var percent = (used/total)*100;
+// var whole = percent.toPrecision(2);
 
-var c=document.getElementById("myCanvas");
+// var c=document.getElementById("myCanvas");
 
-var ctx=c.getContext("2d");
+// var ctx=c.getContext("2d");
 
-ctx.beginPath();
-ctx.lineWidth="6";
-ctx.strokeStyle="white";
-ctx.fillStyle = "white";
-ctx.fillRect(0 ,25 ,55,total);
-ctx.stroke(); 
+// ctx.beginPath();
+// ctx.lineWidth="6";
+// ctx.strokeStyle="white";
+// ctx.fillStyle = "white";
+// ctx.fillRect(0 ,25 ,55,total);
+// ctx.stroke(); 
 
-ctx.beginPath();
-ctx.lineWidth="6";
-ctx.strokeStyle="green";
-ctx.fillStyle = "green";
-ctx.fillRect(0,total-used+25,55,used);
-ctx.stroke(); 
+// ctx.beginPath();
+// ctx.lineWidth="6";
+// ctx.strokeStyle="green";
+// ctx.fillStyle = "green";
+// ctx.fillRect(0,total-used+25,55,used);
+// ctx.stroke(); 
 
-ctx.beginPath();
-ctx.textAlign="center";
-ctx.font = "10px Arial";
-ctx.fillStyle = "WHITE";
-ctx.fillText("MEMORY",27.5,22);
-ctx.font = "20px Arial";
-ctx.fillStyle = "BLACK";
-ctx.fillText(whole + '%',27.5,44);
+// ctx.beginPath();
+// ctx.textAlign="center";
+// ctx.font = "10px Arial";
+// ctx.fillStyle = "WHITE";
+// ctx.fillText("MEMORY",27.5,22);
+// ctx.font = "20px Arial";
+// ctx.fillStyle = "BLACK";
+// ctx.fillText(whole + '%',27.5,44);
 
 function formatDate(date) {
     var d = new Date(date),

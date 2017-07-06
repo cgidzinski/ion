@@ -12,20 +12,17 @@ module.exports = function(app, request,Gpio,fs,pr) {
         app.get('/', function(req, res) {
            
 
-           // diskspace.check('/', function (err, result)
-           //  {
-
-            //console.log(result.total);
-            //console.log(result.free);
-
-                res.render('/home/ion/views/dashboard.ejs',{
-                //mTotal: result.total,
-                //mFree: result.free
+                res.render('/home/ion/views/welcome.ejs',{
                 });
 
 
-            // })
+          
         });
+
+        app.get('/dashboard', function(req, res) {
+            res.render('/home/ion/views/dashboard.ejs');
+
+
         app.get('/welcome', function(req, res) {
             res.render('/home/ion/views/welcome.ejs');
         });
